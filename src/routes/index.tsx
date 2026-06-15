@@ -7,6 +7,7 @@ import { Projects } from "@/components/site/Projects";
 import { WhyUs } from "@/components/site/WhyUs";
 import { Testimonials } from "@/components/site/Testimonials";
 import { Blog } from "@/components/site/Blog";
+import { Reels } from "@/components/site/Reels";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 
@@ -37,6 +38,7 @@ function Index() {
       <WhyUs />
       <Testimonials />
       <Blog />
+      <Reels />
       <Contact />
       <Footer />
     </main>
