@@ -1,4 +1,5 @@
 import { SITE, NAV } from "@/lib/site";
+import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Linkedin, ArrowUp } from "lucide-react";
 
 export function Footer() {
@@ -33,10 +34,10 @@ export function Footer() {
             <div className="eyebrow">Navigate</div>
             <ul className="mt-5 space-y-3">
               {NAV.map((n) => (
-                <li key={n.href}>
-                  <a href={n.href} className="text-sm text-foreground/70 hover:text-gold">
+                <li key={n.to}>
+                  <Link to={n.to} className="text-sm text-foreground/70 hover:text-gold">
                     {n.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -66,9 +67,9 @@ export function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/8 py-7 text-xs text-foreground/50">
           <div>© {new Date().getFullYear()} Star Heights Constructions Co. All rights reserved.</div>
           <div className="tracking-[0.2em]">{SITE.region}</div>
-          <a href="#home" className="inline-flex items-center gap-2 text-gold hover:text-gold-soft">
+          <Link to="/" className="inline-flex items-center gap-2 text-gold hover:text-gold-soft">
             BACK TO TOP <ArrowUp className="h-3.5 w-3.5" />
-          </a>
+          </Link>
         </div>
       </div>
     </footer>
