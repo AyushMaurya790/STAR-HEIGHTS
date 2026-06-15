@@ -12,12 +12,12 @@ export const SITE = {
   logo: logoAsset.url,
 };
 
-export const NAV = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Why Us", href: "#why" },
-  { label: "Blog", href: "#blog" },
-  { label: "Contact", href: "#contact" },
+export const NAV: { label: string; to: string }[] = [
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "Services", to: "/services" },
+  { label: "Projects", to: "/projects" },
+  { label: "Why Us", to: "/why-us" },
+  { label: "Blog", to: "/blog" },
+  { label: "Contact", to: "/contact" },
 ];

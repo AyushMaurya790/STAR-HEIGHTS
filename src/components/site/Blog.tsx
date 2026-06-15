@@ -1,4 +1,5 @@
 import { ArrowUpRight, Calendar } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import projCommercial from "@/assets/project-commercial.jpg";
 import projResidential from "@/assets/project-residential.jpg";
 import projApartment from "@/assets/project-apartment.jpg";
@@ -30,7 +31,7 @@ const POSTS = [
   },
 ];
 
-export function Blog() {
+export function Blog({ showAll = false }: { showAll?: boolean }) {
   return (
     <section id="blog" className="relative bg-charcoal-deep py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-10">
@@ -44,13 +45,15 @@ export function Blog() {
               Insights from the <span className="gold-gradient-text italic">field</span>.
             </h2>
           </div>
-          <a
-            href="#contact"
-            className="group inline-flex items-center gap-2 text-sm tracking-[0.2em] text-gold hover:text-foreground transition-colors"
-          >
-            VIEW ALL ARTICLES
-            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          {!showAll && (
+            <Link
+              to="/blog"
+              className="group inline-flex items-center gap-2 text-sm tracking-[0.2em] text-gold hover:text-foreground transition-colors"
+            >
+              VIEW ALL ARTICLES
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+          )}
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
@@ -79,13 +82,13 @@ export function Blog() {
                   {p.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-foreground/65">{p.excerpt}</p>
-                <a
-                  href="#contact"
+                <Link
+                  to="/blog"
                   className="mt-5 inline-flex items-center gap-2 text-xs tracking-[0.25em] text-gold"
                 >
                   READ MORE
                   <ArrowUpRight className="h-3.5 w-3.5" />
-                </a>
+                </Link>
               </div>
             </article>
           ))}
