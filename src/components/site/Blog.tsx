@@ -60,7 +60,7 @@ export function Blog({ showAll = false }: { showAll?: boolean }) {
           {POSTS.map((p) => (
             <article
               key={p.title}
-              className="group relative overflow-hidden rounded-2xl border border-gold/10 bg-charcoal/40 backdrop-blur-sm transition-all hover:border-gold/40 hover:-translate-y-1"
+              className="group relative overflow-hidden rounded-2xl border border-gold/10 bg-card backdrop-blur-sm transition-all hover:border-gold/40 hover:-translate-y-1"
             >
               <div className="relative h-60 overflow-hidden">
                 <img

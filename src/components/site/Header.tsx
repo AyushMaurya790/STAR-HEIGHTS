@@ -18,7 +18,7 @@ export function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "border-b border-gold/15 bg-charcoal-deep/80 backdrop-blur-xl py-3"
+          ? "border-b border-gold/15 bg-background/85 backdrop-blur-xl py-3"
           : "py-5 bg-transparent"
       }`}
     >
@@ -68,7 +68,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-gold/15 bg-charcoal-deep/95 backdrop-blur-xl animate-fade-in">
+        <div className="lg:hidden border-t border-gold/15 bg-background/95 backdrop-blur-xl animate-fade-in">
           <nav className="mx-auto flex max-w-7xl flex-col px-5 py-4">
             {NAV.map((n) => (
               <Link

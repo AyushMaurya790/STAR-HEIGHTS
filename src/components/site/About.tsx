@@ -59,7 +59,7 @@ export function About() {
                 ["Region", "Pan-NCR"],
                 ["Focus", "Turnkey"],
               ].map(([k, v]) => (
-                <div key={k} className="bg-charcoal p-5">
+                <div key={k} className="bg-card p-5">
                   <div className="text-[10px] uppercase tracking-[0.3em] text-foreground/50">{k}</div>
                   <div className="mt-1 font-display text-xl text-gold">{v}</div>
                 </div>

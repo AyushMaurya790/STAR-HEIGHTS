@@ -101,9 +101,9 @@ export function Contact() {
                 <label className="block">
                   <span className="text-[10px] tracking-[0.3em] uppercase text-foreground/55">Project Type</span>
                   <select className="mt-2 w-full border-0 border-b border-foreground/15 bg-transparent py-3 text-foreground focus:border-gold focus:outline-none">
-                    <option className="bg-charcoal-deep">Residential</option>
-                    <option className="bg-charcoal-deep">Commercial</option>
-                    <option className="bg-charcoal-deep">Apartment Development</option>
+                    <option className="bg-card">Residential</option>
+                    <option className="bg-card">Commercial</option>
+                    <option className="bg-card">Apartment Development</option>
                   </select>
                 </label>
                 <label className="block">

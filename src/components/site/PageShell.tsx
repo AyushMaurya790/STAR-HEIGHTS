@@ -14,9 +14,9 @@ export function PageShell({
   children: ReactNode;
 }) {
   return (
-    <main className="bg-charcoal-deep text-foreground">
+    <main className="bg-background text-foreground">
       <Header />
-      <section className="relative pt-40 pb-16 lg:pt-48 lg:pb-24 bg-charcoal-deep overflow-hidden">
+      <section className="relative pt-40 pb-16 lg:pt-48 lg:pb-24 bg-cream overflow-hidden">
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.05]"
           style={{
