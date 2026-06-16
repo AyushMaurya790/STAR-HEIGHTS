@@ -79,10 +79,10 @@ export function Reels() {
 
               {/* Bottom info */}
               <div className="absolute inset-x-0 bottom-0 p-5">
-                <h3 className="font-display text-base font-semibold text-foreground leading-snug">
+                <h3 className="font-display text-base font-semibold text-ivory leading-snug">
                   {r.title}
                 </h3>
-                <div className="mt-3 flex items-center gap-4 text-[11px] text-foreground/75">
+                <div className="mt-3 flex items-center gap-4 text-[11px] text-ivory/75">
                   <span className="inline-flex items-center gap-1">
                     <Heart className="h-3.5 w-3.5 text-gold" /> {r.likes}
                   </span>
