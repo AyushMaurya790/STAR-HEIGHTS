@@ -6,7 +6,7 @@ import { useState } from "react";
 export function Contact() {
   const [sent, setSent] = useState(false);
   return (
-    <section id="contact" className="relative bg-charcoal py-28 lg:py-40">
+    <section id="contact" className="relative bg-cream py-28 lg:py-40">
       <div className="mx-auto max-w-7xl px-5 lg:px-10">
         <div className="grid gap-16 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
           <Reveal>
@@ -77,7 +77,7 @@ export function Contact() {
                 e.preventDefault();
                 setSent(true);
               }}
-              className="rounded-sm border border-gold/20 bg-charcoal-deep p-8 lg:p-10"
+              className="rounded-sm border border-gold/20 bg-card p-8 lg:p-10"
             >
               <h3 className="font-display text-2xl font-semibold">Project Enquiry</h3>
               <p className="mt-2 text-sm text-foreground/60">Share a few details and we'll be in touch.</p>
@@ -94,13 +94,13 @@ export function Contact() {
                       required
                       type={f.t}
                       placeholder={f.p}
-                      className="mt-2 w-full border-0 border-b border-white/15 bg-transparent py-3 text-foreground placeholder:text-foreground/30 focus:border-gold focus:outline-none transition-colors"
+                      className="mt-2 w-full border-0 border-b border-foreground/15 bg-transparent py-3 text-foreground placeholder:text-foreground/30 focus:border-gold focus:outline-none transition-colors"
                     />
                   </label>
                 ))}
                 <label className="block">
                   <span className="text-[10px] tracking-[0.3em] uppercase text-foreground/55">Project Type</span>
-                  <select className="mt-2 w-full border-0 border-b border-white/15 bg-transparent py-3 text-foreground focus:border-gold focus:outline-none">
+                  <select className="mt-2 w-full border-0 border-b border-foreground/15 bg-transparent py-3 text-foreground focus:border-gold focus:outline-none">
                     <option className="bg-charcoal-deep">Residential</option>
                     <option className="bg-charcoal-deep">Commercial</option>
                     <option className="bg-charcoal-deep">Apartment Development</option>
@@ -111,7 +111,7 @@ export function Contact() {
                   <textarea
                     rows={4}
                     placeholder="Tell us about your project..."
-                    className="mt-2 w-full resize-none border-0 border-b border-white/15 bg-transparent py-3 text-foreground placeholder:text-foreground/30 focus:border-gold focus:outline-none"
+                    className="mt-2 w-full resize-none border-0 border-b border-foreground/15 bg-transparent py-3 text-foreground placeholder:text-foreground/30 focus:border-gold focus:outline-none"
                   />
                 </label>
               </div>

@@ -12,7 +12,7 @@ const PROJECTS = [
 
 export function Projects() {
   return (
-    <section id="projects" className="relative bg-charcoal-deep py-28 lg:py-40">
+    <section id="projects" className="relative bg-ivory py-28 lg:py-40">
       <div className="mx-auto max-w-7xl px-5 lg:px-10">
         <div className="mb-16 flex flex-wrap items-end justify-between gap-8">
           <Reveal>

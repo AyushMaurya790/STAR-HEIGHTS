@@ -33,7 +33,7 @@ const POSTS = [
 
 export function Blog({ showAll = false }: { showAll?: boolean }) {
   return (
-    <section id="blog" className="relative bg-charcoal-deep py-24 lg:py-32">
+    <section id="blog" className="relative bg-ivory py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
           <div>

@@ -21,7 +21,7 @@ const TRACK = [...REELS, ...REELS];
 
 export function Reels() {
   return (
-    <section id="reels" className="relative bg-charcoal py-24 lg:py-32 overflow-hidden">
+    <section id="reels" className="relative bg-cream py-24 lg:py-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-5 lg:px-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>

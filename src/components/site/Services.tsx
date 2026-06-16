@@ -50,7 +50,7 @@ export function Services() {
         <div className="grid gap-6 md:grid-cols-3">
           {SERVICES.map((s, i) => (
             <Reveal key={s.title} delay={i * 120}>
-              <article className="group relative h-full overflow-hidden rounded-sm border border-white/8 bg-charcoal-deep p-8 transition-all duration-500 hover:border-gold/40 hover:-translate-y-1.5">
+              <article className="group relative h-full overflow-hidden rounded-sm border border-foreground/10 bg-card p-8 transition-all duration-500 hover:border-gold/40 hover:-translate-y-1.5">
                 <div className="absolute inset-0 bg-gradient-to-br from-gold/0 via-gold/0 to-gold/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="relative">
                   <div className="grid h-14 w-14 place-items-center rounded-sm border border-gold/30 bg-gold/5 text-gold transition-all duration-500 group-hover:bg-gold group-hover:text-charcoal-deep group-hover:rotate-6">
@@ -70,7 +70,7 @@ export function Services() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-8 flex items-center justify-between border-t border-white/8 pt-5">
+                  <div className="mt-8 flex items-center justify-between border-t border-foreground/10 pt-5">
                     <span className="text-[10px] tracking-[0.3em] uppercase text-foreground/40">
                       0{i + 1} / 03
                     </span>
