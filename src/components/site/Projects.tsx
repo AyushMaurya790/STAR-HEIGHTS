@@ -52,7 +52,7 @@ export function Projects() {
                 </span>
                 <span className="text-[10px] tracking-[0.3em] text-ivory/70">{PROJECTS[0].tag.toUpperCase()}</span>
               </div>
-              <h3 className="font-display text-3xl md:text-5xl font-semibold max-w-3xl">
+              <h3 className="font-display text-3xl md:text-5xl font-semibold max-w-3xl text-ivory">
                 {PROJECTS[0].title}
               </h3>
               <div className="mt-4 flex items-center gap-5 text-sm text-ivory/80">
@@ -78,7 +78,7 @@ export function Projects() {
                 </div>
                 <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
                   <span className="text-[10px] tracking-[0.3em] text-gold">{p.tag.toUpperCase()}</span>
-                  <h3 className="mt-2 font-display text-2xl md:text-3xl font-semibold">{p.title}</h3>
+                  <h3 className="mt-2 font-display text-2xl md:text-3xl font-semibold text-ivory">{p.title}</h3>
                   <div className="mt-3 flex items-center gap-4 text-xs text-ivory/75">
                     <span className="inline-flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5 text-gold" />{p.loc}</span>
                     <span>{p.year}</span>
