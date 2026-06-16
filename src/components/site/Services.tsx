@@ -23,28 +23,41 @@ const SERVICES = [
   {
     icon: Factory,
     title: "Industrial Construction",
-    desc: "Warehouses, factories and institutional facilities — built to industrial-grade specifications, safety norms and operational scale.",
-    points: ["Warehouses", "Factory Sheds", "Institutional"],
+    desc: "Warehouses, factories and institutional facilities — engineered to industrial-grade specifications, safety norms and operational scale.",
+    points: ["Warehouses & Sheds", "Factories", "Institutional"],
   },
   {
     icon: Paintbrush,
     title: "Renovation & Interiors",
-    desc: "Full-scope renovation, interior fit-outs and bespoke modernization that transform existing spaces into modern, refined environments.",
+    desc: "Full-scope renovation, bespoke interior fit-outs and modernization that transform existing spaces into refined, contemporary environments.",
     points: ["Modern Interiors", "Space Modernization", "Premium Fit-Out"],
   },
 ];
 
 export function Services() {
   return (
-    <section id="services" className="relative py-28 lg:py-40 bg-cream">
-      <div className="mx-auto max-w-7xl px-5 lg:px-10">
+    <section id="services" className="relative py-28 lg:py-40 bg-cream overflow-hidden">
+      {/* Architectural grid */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage:
+            "linear-gradient(var(--charcoal-deep) 1px, transparent 1px), linear-gradient(90deg, var(--charcoal-deep) 1px, transparent 1px)",
+          backgroundSize: "100px 100px",
+        }}
+      />
+      {/* Floating gold orb */}
+      <div className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-gold/10 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-charcoal-deep/5 blur-3xl" />
+
+      <div className="relative mx-auto max-w-7xl px-5 lg:px-10">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-end mb-16">
           <Reveal>
             <div className="flex items-center gap-3 mb-6">
               <span className="h-px w-10 bg-gold" />
               <span className="eyebrow">What We Do</span>
             </div>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05]">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] text-foreground">
               End-to-end construction,
               <br />
               <span className="gold-gradient-text italic">elevated</span>.
@@ -62,37 +75,102 @@ export function Services() {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s, i) => (
-            <Reveal key={s.title} delay={i * 100}>
-              <article className="group relative h-full overflow-hidden rounded-sm border border-foreground/10 bg-ivory p-8 transition-all duration-500 hover:border-gold/50 hover:-translate-y-1.5 hover:shadow-[0_30px_60px_-30px_rgba(0,0,0,0.18)]">
-                <div className="absolute inset-0 bg-gradient-to-br from-gold/0 via-gold/0 to-gold/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            <Reveal key={s.title} delay={i * 90}>
+              <article className="group relative h-full overflow-hidden rounded-sm border border-foreground/10 bg-ivory p-8 transition-all duration-700 hover:border-gold/50 hover:-translate-y-2 hover:shadow-[0_40px_80px_-30px_rgba(0,0,0,0.25)]">
+                {/* Sliding black overlay from bottom */}
+                <div className="absolute inset-0 bg-charcoal-deep translate-y-full transition-transform duration-700 ease-out group-hover:translate-y-0" />
+
+                {/* Gold sweep line at top */}
+                <div className="absolute top-0 left-0 h-px w-0 bg-gold transition-all duration-700 group-hover:w-full" />
+                {/* Gold sweep line at bottom */}
+                <div className="absolute bottom-0 right-0 h-px w-0 bg-gold transition-all duration-700 delay-100 group-hover:w-full" />
+
+                {/* Corner accents */}
+                <div className="pointer-events-none absolute top-3 right-3 h-5 w-5 border-r border-t border-gold/0 transition-colors duration-500 group-hover:border-gold/60" />
+                <div className="pointer-events-none absolute bottom-3 left-3 h-5 w-5 border-l border-b border-gold/0 transition-colors duration-500 group-hover:border-gold/60" />
+
+                {/* Big watermark number */}
+                <div className="pointer-events-none absolute -top-6 -right-2 font-display text-[8rem] leading-none font-bold text-foreground/[0.04] transition-all duration-700 group-hover:text-gold/15 group-hover:-translate-y-2">
+                  0{i + 1}
+                </div>
+
                 <div className="relative">
-                  <div className="grid h-14 w-14 place-items-center rounded-sm border border-gold/40 bg-gold/10 text-gold transition-all duration-500 group-hover:bg-gold group-hover:text-charcoal-deep group-hover:rotate-6">
-                    <s.icon className="h-6 w-6" />
+                  {/* Icon block with depth */}
+                  <div className="relative h-16 w-16">
+                    <div className="absolute inset-0 rounded-sm bg-charcoal-deep translate-x-1.5 translate-y-1.5 opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:bg-gold/30" />
+                    <div className="relative grid h-16 w-16 place-items-center rounded-sm border border-gold/40 bg-gold/10 text-gold transition-all duration-500 group-hover:bg-gold group-hover:text-charcoal-deep group-hover:border-gold group-hover:rotate-[-8deg] group-hover:scale-110">
+                      <s.icon className="h-7 w-7 transition-transform duration-500" strokeWidth={1.6} />
+                    </div>
                   </div>
-                  <h3 className="mt-7 font-display text-2xl font-semibold text-foreground">
+
+                  <h3 className="mt-7 font-display text-2xl font-semibold text-foreground transition-colors duration-500 group-hover:text-ivory">
                     {s.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-foreground/65">
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/65 transition-colors duration-500 group-hover:text-ivory/75">
                     {s.desc}
                   </p>
                   <ul className="mt-6 space-y-2">
                     {s.points.map((p) => (
-                      <li key={p} className="flex items-center gap-2 text-xs tracking-wider text-foreground/75">
-                        <span className="h-px w-4 bg-gold" />
+                      <li
+                        key={p}
+                        className="flex items-center gap-2 text-xs tracking-wider text-foreground/75 transition-colors duration-500 group-hover:text-ivory/85"
+                      >
+                        <span className="h-px w-4 bg-gold transition-all duration-500 group-hover:w-6" />
                         {p}
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-8 flex items-center justify-between border-t border-foreground/10 pt-5">
-                    <span className="text-[10px] tracking-[0.3em] uppercase text-foreground/45">
+                  <div className="mt-8 flex items-center justify-between border-t border-foreground/10 pt-5 transition-colors duration-500 group-hover:border-gold/30">
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-foreground/45 transition-colors duration-500 group-hover:text-gold">
                       0{i + 1} / 0{SERVICES.length}
                     </span>
-                    <ArrowUpRight className="h-5 w-5 text-gold transition-transform group-hover:rotate-45" />
+                    {/* CTA chip */}
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-foreground/15 px-3 py-1 text-[10px] tracking-[0.25em] text-foreground/60 transition-all duration-500 group-hover:border-gold group-hover:bg-gold group-hover:text-charcoal-deep group-hover:gap-2.5">
+                      ENQUIRE
+                      <ArrowUpRight className="h-3 w-3 transition-transform duration-500 group-hover:rotate-45" />
+                    </span>
                   </div>
                 </div>
               </article>
             </Reveal>
           ))}
+
+          {/* Black "Talk to us" CTA tile to fill 6th slot on lg */}
+          <Reveal delay={SERVICES.length * 90}>
+            <a
+              href="/contact"
+              className="group relative h-full min-h-[360px] overflow-hidden rounded-sm bg-charcoal-deep border border-gold/30 p-8 flex flex-col justify-between transition-all duration-500 hover:border-gold hover:-translate-y-2 hover:shadow-[0_40px_80px_-30px_rgba(0,0,0,0.5)]"
+            >
+              <div
+                className="pointer-events-none absolute inset-0 opacity-[0.06]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px)",
+                  backgroundSize: "40px 40px",
+                }}
+              />
+              <div className="pointer-events-none absolute -bottom-20 -right-20 h-56 w-56 rounded-full bg-gold/10 blur-3xl transition-all duration-700 group-hover:bg-gold/25" />
+
+              <div className="relative">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="h-px w-8 bg-gold" />
+                  <span className="text-[10px] tracking-[0.3em] uppercase text-gold">Custom Brief</span>
+                </div>
+                <h3 className="font-display text-3xl font-semibold text-ivory leading-tight">
+                  Have a project that doesn't fit a category?
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-ivory/70">
+                  Speak to our advisory team. We've delivered hotels, hospitals
+                  and one-off architectural challenges across NCR.
+                </p>
+              </div>
+
+              <div className="relative mt-8 inline-flex items-center gap-3 self-start rounded-full bg-gold px-6 py-3 text-xs font-medium tracking-[0.25em] text-charcoal-deep transition-all duration-500 group-hover:gap-5 group-hover:shadow-[0_15px_40px_-10px_var(--gold)]">
+                START A BRIEF
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:rotate-45" />
+              </div>
+            </a>
+          </Reveal>
         </div>
       </div>
     </section>
