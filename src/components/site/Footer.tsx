@@ -65,7 +65,7 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-ivory/15 py-7 text-xs text-ivory/55">
-          <div>© {new Date().getFullYear()} Star Heights Constructions Co. All rights reserved.</div>
+          <div>© 2026 All rights reserved by digiwits</div>
           <div className="tracking-[0.2em]">{SITE.region}</div>
           <Link to="/" className="inline-flex items-center gap-2 text-gold hover:text-gold-soft">
             BACK TO TOP <ArrowUp className="h-3.5 w-3.5" />
