@@ -21,7 +21,7 @@ const TRACK = [...REELS, ...REELS];
 
 export function Reels() {
   return (
-    <section id="reels" className="relative bg-charcoal py-24 lg:py-32 overflow-hidden">
+    <section id="reels" className="relative bg-cream py-24 lg:py-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-5 lg:px-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>
@@ -48,8 +48,8 @@ export function Reels() {
 
       {/* Edge fade masks */}
       <div className="relative">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-charcoal to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-charcoal to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-cream to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-cream to-transparent" />
 
         <div
           className="group flex w-max gap-5 animate-marquee px-5 lg:px-10"
@@ -79,10 +79,10 @@ export function Reels() {
 
               {/* Bottom info */}
               <div className="absolute inset-x-0 bottom-0 p-5">
-                <h3 className="font-display text-base font-semibold text-foreground leading-snug">
+                <h3 className="font-display text-base font-semibold text-ivory leading-snug">
                   {r.title}
                 </h3>
-                <div className="mt-3 flex items-center gap-4 text-[11px] text-foreground/75">
+                <div className="mt-3 flex items-center gap-4 text-[11px] text-ivory/75">
                   <span className="inline-flex items-center gap-1">
                     <Heart className="h-3.5 w-3.5 text-gold" /> {r.likes}
                   </span>

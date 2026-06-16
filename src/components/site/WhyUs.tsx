@@ -37,7 +37,7 @@ const PILLARS = [
 
 export function WhyUs() {
   return (
-    <section id="why" className="relative bg-charcoal py-28 lg:py-40">
+    <section id="why" className="relative bg-cream py-28 lg:py-40">
       <div className="mx-auto max-w-7xl px-5 lg:px-10">
         <div className="mb-16 max-w-3xl">
           <Reveal>
@@ -59,7 +59,7 @@ export function WhyUs() {
             { n: 5, s: "M+", l: "Sq.Ft Built" },
             { n: 100, s: "%", l: "On-Time" },
           ].map((c) => (
-            <div key={c.l} className="bg-charcoal-deep p-8 text-center">
+            <div key={c.l} className="bg-card p-8 text-center">
               <Counter end={c.n} suffix={c.s} />
               <div className="mt-2 text-[10px] tracking-[0.3em] uppercase text-foreground/60">{c.l}</div>
             </div>
@@ -69,7 +69,7 @@ export function WhyUs() {
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {PILLARS.map((p, i) => (
             <Reveal key={p.title} delay={i * 100}>
-              <div className="group h-full rounded-sm border border-white/8 bg-charcoal-deep p-7 transition-all hover:border-gold/40">
+              <div className="group h-full rounded-sm border border-foreground/10 bg-card p-7 transition-all hover:border-gold/40">
                 <div className="grid h-12 w-12 place-items-center rounded-sm border border-gold/30 text-gold transition-all group-hover:bg-gold group-hover:text-charcoal-deep">
                   <p.icon className="h-5 w-5" />
                 </div>

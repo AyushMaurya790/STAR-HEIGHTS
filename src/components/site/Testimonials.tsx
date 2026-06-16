@@ -32,7 +32,7 @@ export function Testimonials() {
   const item = ITEMS[i];
 
   return (
-    <section className="relative bg-charcoal-deep py-28 lg:py-40 overflow-hidden">
+    <section className="relative bg-ivory py-28 lg:py-40 overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{

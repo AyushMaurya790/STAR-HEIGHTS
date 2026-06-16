@@ -3,7 +3,7 @@ import { Reveal } from "./Reveal";
 
 export function About() {
   return (
-    <section id="about" className="relative bg-charcoal-deep py-28 lg:py-40">
+    <section id="about" className="relative bg-ivory py-28 lg:py-40">
       <div className="mx-auto grid max-w-7xl gap-16 px-5 lg:grid-cols-[1.05fr_1fr] lg:gap-24 lg:px-10">
         <Reveal className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
@@ -59,7 +59,7 @@ export function About() {
                 ["Region", "Pan-NCR"],
                 ["Focus", "Turnkey"],
               ].map(([k, v]) => (
-                <div key={k} className="bg-charcoal p-5">
+                <div key={k} className="bg-card p-5">
                   <div className="text-[10px] uppercase tracking-[0.3em] text-foreground/50">{k}</div>
                   <div className="mt-1 font-display text-xl text-gold">{v}</div>
                 </div>

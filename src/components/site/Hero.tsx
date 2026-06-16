@@ -102,11 +102,11 @@ export function Hero() {
             <span className="eyebrow">{SLIDES[i].eyebrow}</span>
           </div>
 
-          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] leading-[0.95] font-semibold text-foreground">
+          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] leading-[0.95] font-semibold text-ivory">
             {SLIDES[i].title}
           </h1>
 
-          <p className="mt-8 max-w-xl text-base md:text-lg leading-relaxed text-foreground/70">
+          <p className="mt-8 max-w-xl text-base md:text-lg leading-relaxed text-ivory/80">
             {SLIDES[i].sub}
           </p>
 
@@ -120,7 +120,7 @@ export function Hero() {
             </a>
             <a
               href="#about"
-              className="group inline-flex items-center gap-3 rounded-full border border-foreground/25 px-7 py-4 text-sm font-medium tracking-[0.2em] text-foreground transition-all hover:border-gold hover:text-gold"
+              className="group inline-flex items-center gap-3 rounded-full border border-ivory/40 px-7 py-4 text-sm font-medium tracking-[0.2em] text-ivory transition-all hover:border-gold hover:text-gold"
             >
               <Play className="h-3.5 w-3.5 fill-current" />
               OUR STORY
@@ -136,7 +136,7 @@ export function Hero() {
               onClick={() => setI(idx)}
               aria-label={`Slide ${idx + 1}`}
               className={`h-[3px] rounded-full transition-all duration-500 ${
-                idx === i ? "w-12 bg-gold" : "w-6 bg-foreground/25 hover:bg-foreground/50"
+                idx === i ? "w-12 bg-gold" : "w-6 bg-ivory/30 hover:bg-ivory/60"
               }`}
             />
           ))}
@@ -154,7 +154,7 @@ export function Hero() {
               <div className="font-display text-3xl md:text-4xl font-semibold gold-gradient-text">
                 {n}
               </div>
-              <div className="mt-1 text-[10px] tracking-[0.25em] uppercase text-foreground/60">
+              <div className="mt-1 text-[10px] tracking-[0.25em] uppercase text-ivory/70">
                 {l}
               </div>
             </div>
@@ -162,7 +162,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-2 text-foreground/40">
+      <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-2 text-ivory/50">
         <span className="text-[10px] tracking-[0.4em]">SCROLL</span>
         <div className="h-10 w-px bg-gradient-to-b from-gold to-transparent" />
       </div>
