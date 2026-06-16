@@ -13,17 +13,17 @@ export function Footer() {
                 <img src={SITE.logo} alt="Star Heights" className="h-full w-full object-cover" />
               </div>
               <div className="leading-tight">
-                <div className="font-display text-base font-semibold">STAR HEIGHTS</div>
+                <div className="font-display text-base font-semibold text-ivory">STAR HEIGHTS</div>
                 <div className="text-[10px] tracking-[0.3em] text-gold">CONSTRUCTION CO.</div>
               </div>
             </div>
-            <p className="mt-6 max-w-sm text-sm leading-relaxed text-foreground/60">
+            <p className="mt-6 max-w-sm text-sm leading-relaxed text-ivory/65">
               A premier Delhi NCR construction house — building residential,
               commercial and apartment developments with precision since 2002.
             </p>
             <div className="mt-6 flex gap-3">
               {[Facebook, Instagram, Linkedin].map((I, i) => (
-                <a key={i} href="#" aria-label="Social" className="grid h-10 w-10 place-items-center rounded-full border border-gold/25 text-foreground/70 hover:bg-gold hover:text-charcoal-deep hover:border-gold transition-all">
+                <a key={i} href="#" aria-label="Social" className="grid h-10 w-10 place-items-center rounded-full border border-gold/25 text-ivory/75 hover:bg-gold hover:text-charcoal-deep hover:border-gold transition-all">
                   <I className="h-4 w-4" />
                 </a>
               ))}
@@ -35,7 +35,7 @@ export function Footer() {
             <ul className="mt-5 space-y-3">
               {NAV.map((n) => (
                 <li key={n.to}>
-                  <Link to={n.to} className="text-sm text-foreground/70 hover:text-gold">
+                  <Link to={n.to} className="text-sm text-ivory/75 hover:text-gold">
                     {n.label}
                   </Link>
                 </li>
@@ -45,7 +45,7 @@ export function Footer() {
 
           <div>
             <div className="eyebrow">Services</div>
-            <ul className="mt-5 space-y-3 text-sm text-foreground/70">
+            <ul className="mt-5 space-y-3 text-sm text-ivory/75">
               <li>Residential Construction</li>
               <li>Commercial Projects</li>
               <li>Apartment Development</li>
@@ -56,7 +56,7 @@ export function Footer() {
 
           <div>
             <div className="eyebrow">Reach Us</div>
-            <ul className="mt-5 space-y-3 text-sm text-foreground/70">
+            <ul className="mt-5 space-y-3 text-sm text-ivory/75">
               <li>{SITE.address}</li>
               {SITE.phones.map((p) => <li key={p}>{p}</li>)}
               <li>{SITE.email}</li>
@@ -64,7 +64,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/8 py-7 text-xs text-foreground/50">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-ivory/15 py-7 text-xs text-ivory/55">
           <div>© {new Date().getFullYear()} Star Heights Constructions Co. All rights reserved.</div>
           <div className="tracking-[0.2em]">{SITE.region}</div>
           <Link to="/" className="inline-flex items-center gap-2 text-gold hover:text-gold-soft">
