@@ -15,7 +15,7 @@ const COMMITMENTS = [
   "On-time, on-spec handover",
 ];
 
-export function About() {
+export function About({ noHeader = false }: { noHeader?: boolean }) {
   return (
     <section id="about" className="relative bg-ivory py-28 lg:py-40 overflow-hidden">
       {/* faint architectural grid */}
@@ -74,19 +74,21 @@ export function About() {
         </Reveal>
 
         {/* Text column */}
-        <div className="flex flex-col justify-center">
-          <Reveal>
-            <div className="flex items-center gap-3 mb-6">
-              <span className="h-px w-10 bg-gold" />
-              <span className="eyebrow">About the Company</span>
-            </div>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] text-foreground">
-              A legacy of <span className="gold-gradient-text italic">precision</span>,
-              built one structure at a time.
-            </h2>
-          </Reveal>
+        <div className="flex flex-col items-start justify-start lg:justify-center">
+          {!noHeader && (
+            <Reveal>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="h-px w-10 bg-gold" />
+                <span className="eyebrow">About the Company</span>
+              </div>
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] text-foreground">
+                A legacy of <span className="gold-gradient-text italic">precision</span>,
+                built one structure at a time.
+              </h2>
+            </Reveal>
+          )}
 
-          <Reveal delay={120}>
+          <Reveal delay={noHeader ? 0 : 120}>
             <p className="mt-8 text-foreground/75 leading-relaxed">
               Founded in <span className="text-foreground font-medium">2002</span> by directors{" "}
               <span className="text-foreground font-medium">Mr. Amjad Khan</span> and{" "}
