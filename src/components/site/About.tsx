@@ -31,9 +31,9 @@ export function About({ noHeader = false }: { noHeader?: boolean }) {
       <div className="pointer-events-none absolute top-10 left-10 h-20 w-20 border-l-2 border-t-2 border-gold/30" />
       <div className="pointer-events-none absolute bottom-10 right-10 h-20 w-20 border-r-2 border-b-2 border-gold/30" />
 
-      <div className="relative mx-auto grid max-w-7xl gap-16 px-5 lg:grid-cols-[1.05fr_1fr] lg:gap-24 lg:px-10">
+      <div className="relative mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-20 lg:px-10">
         {/* Image column */}
-        <Reveal className="relative">
+        <Reveal className="relative lg:sticky lg:top-28">
           <div className="group relative aspect-[4/5] overflow-hidden rounded-sm">
             {/* Black offset frame */}
             <div className="pointer-events-none absolute -bottom-4 -left-4 h-full w-full rounded-sm bg-charcoal-deep -z-10" />
@@ -44,10 +44,10 @@ export function About({ noHeader = false }: { noHeader?: boolean }) {
               className="h-full w-full object-cover transition-transform duration-[1800ms] ease-out group-hover:scale-110"
             />
             <div className="absolute inset-0 ring-1 ring-inset ring-gold/30" />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal-deep/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal-deep/80 via-charcoal-deep/10 to-transparent" />
 
             {/* Bottom black slate with brand line */}
-            <div className="absolute inset-x-0 bottom-0 bg-charcoal-deep/85 backdrop-blur px-6 py-4 border-t border-gold/30 flex items-center justify-between">
+            <div className="absolute inset-x-0 bottom-0 bg-charcoal-deep/90 backdrop-blur px-5 py-3 border-t border-gold/30 flex items-center justify-between">
               <div className="text-[10px] tracking-[0.3em] uppercase text-ivory/70">
                 Vinod Heights · Delhi NCR
               </div>
@@ -55,26 +55,22 @@ export function About({ noHeader = false }: { noHeader?: boolean }) {
                 Est. 2002
               </div>
             </div>
-          </div>
 
-          {/* Floating years badge */}
-          <div className="absolute -bottom-10 -right-4 lg:-right-10 bg-charcoal-deep border border-gold/40 rounded-sm p-6 max-w-[260px] shadow-[0_30px_60px_-30px_rgba(0,0,0,0.5)]">
-            <div className="flex items-end gap-2">
-              <div className="font-display text-6xl font-semibold gold-gradient-text leading-none">23</div>
-              <div className="font-display text-2xl text-gold pb-1">+</div>
-            </div>
-            <div className="mt-3 text-[11px] tracking-[0.22em] uppercase text-ivory/70 leading-relaxed">
-              Years building landmarks across Delhi NCR
-            </div>
-            <div className="mt-4 flex items-center gap-2">
-              <span className="h-px w-8 bg-gold" />
-              <span className="text-[9px] tracking-[0.3em] text-gold">SINCE 2002</span>
+            {/* Floating years badge — pinned to image, top-right */}
+            <div className="absolute top-5 right-5 bg-charcoal-deep/95 backdrop-blur border border-gold/40 rounded-sm px-5 py-4 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)]">
+              <div className="flex items-end gap-1.5">
+                <div className="font-display text-4xl font-semibold gold-gradient-text leading-none">23</div>
+                <div className="font-display text-xl text-gold pb-0.5">+</div>
+              </div>
+              <div className="mt-2 text-[9px] tracking-[0.25em] uppercase text-ivory/70 leading-tight max-w-[110px]">
+                Years of Legacy
+              </div>
             </div>
           </div>
         </Reveal>
 
         {/* Text column */}
-        <div className="flex flex-col items-start justify-start lg:justify-center">
+        <div className="flex flex-col items-start">
           {!noHeader && (
             <Reveal>
               <div className="flex items-center gap-3 mb-6">
