@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
 import { WhyUs } from "@/components/site/WhyUs";
 import { Testimonials } from "@/components/site/Testimonials";
-import { CTABand } from "@/components/site/MenuExtras";
 
 export const Route = createFileRoute("/why-us")({
   head: () => ({
@@ -23,12 +22,8 @@ function WhyPage() {
       title={<>Built on four <span className="gold-gradient-text italic">non-negotiables</span>.</>}
       intro="Trust, experience, timely delivery, premium quality. The same four principles that have guided every project we've signed since 2002."
     >
-      <WhyUs bare />
+      <WhyUs />
       <Testimonials />
-      <CTABand
-        title="Two decades of clean delivery — and we're just getting started."
-        sub="Talk to our advisory team and see if Star Heights is the right partner for your next build."
-      />
     </PageShell>
   );
 }

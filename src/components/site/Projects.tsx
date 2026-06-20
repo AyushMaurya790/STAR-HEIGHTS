@@ -10,11 +10,10 @@ const PROJECTS = [
   { img: apartment, title: "Faridabad Skyline Towers", tag: "Apartment Development", loc: "Faridabad", year: "2025" },
 ];
 
-export function Projects({ bare = false }: { bare?: boolean } = {}) {
+export function Projects() {
   return (
-    <section id="projects" className="relative bg-ivory py-24 lg:py-32">
+    <section id="projects" className="relative bg-ivory py-28 lg:py-40">
       <div className="mx-auto max-w-7xl px-5 lg:px-10">
-        {!bare && (
         <div className="mb-16 flex flex-wrap items-end justify-between gap-8">
           <Reveal>
             <div className="flex items-center gap-3 mb-6">
@@ -33,7 +32,6 @@ export function Projects({ bare = false }: { bare?: boolean } = {}) {
             </a>
           </Reveal>
         </div>
-        )}
 
         {/* Large featured */}
         <Reveal>

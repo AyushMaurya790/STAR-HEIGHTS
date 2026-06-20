@@ -31,11 +31,10 @@ const POSTS = [
   },
 ];
 
-export function Blog({ showAll = false, bare = false }: { showAll?: boolean; bare?: boolean }) {
+export function Blog({ showAll = false }: { showAll?: boolean }) {
   return (
-    <section id="blog" className="relative bg-ivory py-20 lg:py-28">
+    <section id="blog" className="relative bg-ivory py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-10">
-        {!bare && (
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
           <div>
             <div className="flex items-center gap-3 mb-4">
@@ -56,7 +55,6 @@ export function Blog({ showAll = false, bare = false }: { showAll?: boolean; bar
             </Link>
           )}
         </div>
-        )}
 
         <div className="grid gap-6 md:grid-cols-3">
           {POSTS.map((p) => (

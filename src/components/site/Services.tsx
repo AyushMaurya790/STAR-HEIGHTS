@@ -34,9 +34,9 @@ const SERVICES = [
   },
 ];
 
-export function Services({ bare = false }: { bare?: boolean } = {}) {
+export function Services() {
   return (
-    <section id="services" className="relative py-24 lg:py-32 bg-cream overflow-hidden">
+    <section id="services" className="relative py-28 lg:py-40 bg-cream overflow-hidden">
       {/* Architectural grid */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.04]"
@@ -51,7 +51,6 @@ export function Services({ bare = false }: { bare?: boolean } = {}) {
       <div className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-charcoal-deep/5 blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-5 lg:px-10">
-        {!bare && (
         <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-end mb-16">
           <Reveal>
             <div className="flex items-center gap-3 mb-6">
@@ -73,7 +72,6 @@ export function Services({ bare = false }: { bare?: boolean } = {}) {
             </p>
           </Reveal>
         </div>
-        )}
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s, i) => (

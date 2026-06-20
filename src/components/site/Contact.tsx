@@ -9,15 +9,13 @@ const WARRANTIES = [
   { icon: Clock, k: "1 Yr", l: "General Warranty" },
 ];
 
-export function Contact({ bare = false }: { bare?: boolean } = {}) {
+export function Contact() {
   const [sent, setSent] = useState(false);
   return (
-    <section id="contact" className="relative bg-cream py-24 lg:py-32">
+    <section id="contact" className="relative bg-cream py-28 lg:py-40">
       <div className="mx-auto max-w-7xl px-5 lg:px-10">
         <div className="grid gap-16 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
           <Reveal>
-            {!bare && (
-            <>
             <div className="flex items-center gap-3 mb-6">
               <span className="h-px w-10 bg-gold" />
               <span className="eyebrow">Get In Touch</span>
@@ -31,8 +29,6 @@ export function Contact({ bare = false }: { bare?: boolean } = {}) {
               Schedule a consultation with our project advisory team. We respond
               to every enquiry within one business day.
             </p>
-            </>
-            )}
 
             <div className="mt-10 space-y-6">
               <div className="flex items-start gap-4">
