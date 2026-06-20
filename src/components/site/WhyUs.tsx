@@ -35,10 +35,11 @@ const PILLARS = [
   { icon: Award, title: "Premium Quality", desc: "Specification-grade materials, RERA-aligned QA, and final-finish obsession." },
 ];
 
-export function WhyUs() {
+export function WhyUs({ bare = false }: { bare?: boolean } = {}) {
   return (
-    <section id="why" className="relative bg-cream py-28 lg:py-40">
+    <section id="why" className="relative bg-cream py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-10">
+        {!bare && (
         <div className="mb-16 max-w-3xl">
           <Reveal>
             <div className="flex items-center gap-3 mb-6">
@@ -51,6 +52,7 @@ export function WhyUs() {
             </h2>
           </Reveal>
         </div>
+        )}
 
         <div className="grid gap-px bg-gold/10 overflow-hidden rounded-sm border border-gold/15 md:grid-cols-4">
           {[
