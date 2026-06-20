@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
 import { Contact } from "@/components/site/Contact";
+import { StatsStrip, DEFAULT_STATS } from "@/components/site/MenuExtras";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -21,7 +22,8 @@ function ContactPage() {
       title={<>Let's build something <span className="gold-gradient-text italic">remarkable</span>.</>}
       intro="Tell us about your project — residential, commercial or apartment development — and our advisory team will be in touch within one business day."
     >
-      <Contact />
+      <StatsStrip stats={DEFAULT_STATS} />
+      <Contact bare />
     </PageShell>
   );
 }
