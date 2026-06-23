@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, Phone } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { NAV, SITE } from "@/lib/site";
 import { PopupForm } from "./PopupForm";
+import { FullscreenMenu } from "./FullscreenMenu";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [popupOpen, setPopupOpen] = useState(false);
 
   useEffect(() => {
@@ -61,44 +62,21 @@ export function Header() {
               CONSULT
             </button>
             <button
-              aria-label="Menu"
-              onClick={() => setOpen((v) => !v)}
-              className="lg:hidden grid h-10 w-10 place-items-center rounded-full border border-gold/30 text-gold"
+              aria-label="Open menu"
+              onClick={() => setMenuOpen(true)}
+              className="group inline-flex items-center gap-2 rounded-full border border-gold/30 bg-background/40 px-4 py-2 text-xs font-medium tracking-[0.25em] text-gold transition-all hover:bg-gold hover:text-charcoal-deep"
             >
-              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              <Menu className="h-4 w-4 transition-transform group-hover:rotate-90" />
+              <span className="hidden sm:inline">MENU</span>
             </button>
           </div>
         </div>
-
-        {open && (
-          <div className="lg:hidden border-t border-gold/15 bg-background/95 backdrop-blur-xl animate-fade-in">
-            <nav className="mx-auto flex max-w-7xl flex-col px-5 py-4">
-              {NAV.map((n) => (
-                <Link
-                  key={n.to}
-                  to={n.to}
-                  onClick={() => setOpen(false)}
-                  activeOptions={{ exact: true }}
-                  activeProps={{ className: "text-gold" }}
-                  className="border-b border-white/5 py-3 text-sm tracking-wide text-foreground/85 hover:text-gold"
-                >
-                  {n.label}
-                </Link>
-              ))}
-              <button
-                onClick={() => {
-                  setOpen(false);
-                  setPopupOpen(true);
-                }}
-                className="mt-3 inline-flex items-center justify-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-5 py-2.5 text-xs font-medium tracking-[0.2em] text-gold transition-all hover:bg-gold hover:text-charcoal-deep"
-              >
-                <Phone className="h-3.5 w-3.5" />
-                GET A QUOTE
-              </button>
-            </nav>
-          </div>
-        )}
       </header>
+      <FullscreenMenu
+        open={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        onConsult={() => setPopupOpen(true)}
+      />
       <PopupForm open={popupOpen} onOpenChange={setPopupOpen} />
     </>
   );
