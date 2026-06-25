@@ -1,4 +1,4 @@
-import { Home, Building2, Building, Factory, Paintbrush, ArrowUpRight } from "lucide-react";
+import { Home, Building2, Building, Factory, Paintbrush, ArrowUpRight, Radio } from "lucide-react";
 import { Reveal } from "./Reveal";
 
 const SERVICES = [
@@ -135,10 +135,10 @@ export function Services() {
             </Reveal>
           ))}
 
-          {/* Black "Talk to us" CTA tile to fill 6th slot on lg */}
+          {/* Black "Live Ongoing Projects" CTA tile */}
           <Reveal delay={SERVICES.length * 90}>
             <a
-              href="/contact"
+              href="/projects"
               className="group relative h-full min-h-[360px] overflow-hidden rounded-sm bg-charcoal-deep border border-gold/30 p-8 flex flex-col justify-between transition-all duration-500 hover:border-gold hover:-translate-y-2 hover:shadow-[0_40px_80px_-30px_rgba(0,0,0,0.5)]"
             >
               <div
@@ -153,20 +153,24 @@ export function Services() {
 
               <div className="relative">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="h-px w-8 bg-gold" />
-                  <span className="text-[10px] tracking-[0.3em] uppercase text-gold">Custom Brief</span>
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75" />
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-gold" />
+                  </span>
+                  <span className="text-[10px] tracking-[0.3em] uppercase text-gold">Live Now</span>
                 </div>
                 <h3 className="font-display text-3xl font-semibold text-ivory leading-tight">
-                  Have a project that doesn't fit a category?
+                  Explore our ongoing projects in real time.
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ivory/70">
-                  Speak to our advisory team. We've delivered hotels, hospitals
-                  and one-off architectural challenges across NCR.
+                  Step inside active Star Heights sites across Delhi NCR — track progress,
+                  view current developments, and see craftsmanship as it rises, floor by floor.
                 </p>
               </div>
 
               <div className="relative mt-8 inline-flex items-center gap-3 self-start rounded-full bg-gold px-6 py-3 text-xs font-medium tracking-[0.25em] text-charcoal-deep transition-all duration-500 group-hover:gap-5 group-hover:shadow-[0_15px_40px_-10px_var(--gold)]">
-                START A BRIEF
+                <Radio className="h-4 w-4" />
+                VIEW LIVE PROJECTS
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:rotate-45" />
               </div>
             </a>
