@@ -85,22 +85,24 @@ export function About({ noHeader = false }: { noHeader?: boolean }) {
           )}
 
           <Reveal delay={noHeader ? 0 : 120}>
-            <p className="mt-8 text-foreground/75 leading-relaxed text-justify">
-              Founded in <span className="text-foreground font-medium">1991</span> by visionary directors{" "}
-              <span className="text-foreground font-medium">Mr. Amjad Khan</span> and{" "}
-              <span className="text-foreground font-medium">Mr. Afsar Khan</span>, Star Heights has built a
-              distinguished construction legacy spanning over 35 years. From premium private residences and
-              commercial landmarks to institutional facilities, hospitality projects, and large-scale
-              residential developments across Delhi NCR, we have consistently delivered excellence at every
-              stage of construction.
-            </p>
-            <p className="mt-5 text-foreground/75 leading-relaxed text-justify">
-              As a comprehensive construction partner, Star Heights brings together architects, civil
-              engineers, and project management experts under one roof. Our integrated approach ensures
-              seamless execution, superior quality, timely delivery, and cost-effective solutions —
-              transforming ideas into enduring structures that exceed expectations.
-            </p>
-            <p className="mt-6 font-display text-lg italic gold-gradient-text">
+            <div className="mt-8 max-w-prose space-y-6 text-[15px] md:text-base leading-[1.85] text-foreground/75 [hyphens:auto] text-left md:text-justify">
+              <p>
+                Founded in <span className="text-foreground font-medium">1991</span> by visionary directors{" "}
+                <span className="text-foreground font-medium">Mr. Amjad Khan</span> and{" "}
+                <span className="text-foreground font-medium">Mr. Afsar Khan</span>, Star Heights has built a
+                distinguished construction legacy spanning over 35 years. From premium private residences
+                and commercial landmarks to institutional facilities, hospitality projects, and large-scale
+                residential developments across Delhi NCR, we have consistently delivered excellence at
+                every stage of construction.
+              </p>
+              <p>
+                As a comprehensive construction partner, Star Heights brings together architects, civil
+                engineers, and project management experts under one roof. Our integrated approach ensures
+                seamless execution, superior quality, timely delivery, and cost-effective solutions —
+                transforming ideas into enduring structures that exceed expectations.
+              </p>
+            </div>
+            <p className="mt-7 max-w-prose font-display text-lg md:text-xl italic gold-gradient-text leading-snug">
               Building trust. Delivering quality. Creating landmarks since 1991.
             </p>
           </Reveal>

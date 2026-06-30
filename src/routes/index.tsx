@@ -14,16 +14,23 @@ import { Footer } from "@/components/site/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Star Heights Constructions Co. — Premium Builders Delhi NCR" },
+      { title: "Star Heights Constructions — Premium Builders Delhi NCR Since 1991" },
       {
         name: "description",
         content:
-          "Star Heights Constructions Co. — premier residential, commercial and apartment developers in Delhi NCR since 2002. Precision-built, on-time, turnkey.",
+          "Star Heights Constructions Co. — premium residential, commercial, apartment, industrial and renovation builders across Delhi NCR since 1991. Turnkey delivery, 10-year warranty, live ongoing projects.",
       },
-      { property: "og:title", content: "Star Heights Constructions Co." },
-      { property: "og:description", content: "Premium construction & development across Delhi NCR since 2002." },
+      { property: "og:title", content: "Star Heights Constructions Co. — Building Landmarks Since 1991" },
+      {
+        property: "og:description",
+        content:
+          "35+ years of premium construction across Delhi NCR. Explore our services, live ongoing projects and consult our team.",
+      },
+      { property: "og:url", content: "https://star-heights-vision.lovable.app/" },
     ],
+    links: [{ rel: "canonical", href: "https://star-heights-vision.lovable.app/" }],
   }),
+
   component: Index,
 });
 
