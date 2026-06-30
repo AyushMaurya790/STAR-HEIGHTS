@@ -147,10 +147,8 @@ export function Services() {
 
           {/* Black "Live Ongoing Projects" CTA tile */}
           <Reveal delay={SERVICES.length * 90}>
-            <a
-              href="/projects"
-              className="group relative h-full min-h-[360px] overflow-hidden rounded-sm bg-charcoal-deep border border-gold/30 p-8 flex flex-col justify-between transition-all duration-500 hover:border-gold hover:-translate-y-2 hover:shadow-[0_40px_80px_-30px_rgba(0,0,0,0.5)]"
-            >
+            <div className="group relative h-full min-h-[360px] overflow-hidden rounded-sm bg-charcoal-deep border border-gold/30 p-8 flex flex-col justify-between transition-all duration-500 hover:border-gold hover:-translate-y-2 hover:shadow-[0_40px_80px_-30px_rgba(0,0,0,0.5)]">
+
               <div
                 className="pointer-events-none absolute inset-0 opacity-[0.06]"
                 style={{
