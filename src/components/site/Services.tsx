@@ -1,5 +1,15 @@
 import { Home, Building2, Building, Factory, Paintbrush, ArrowUpRight, Radio } from "lucide-react";
 import { Reveal } from "./Reveal";
+import residentialImg from "@/assets/project-residential.jpg";
+import commercialImg from "@/assets/project-commercial.jpg";
+import apartmentImg from "@/assets/project-apartment.jpg";
+
+const ONGOING_PREVIEW = [
+  { img: residentialImg, name: "Vinod Heights", loc: "East Delhi", progress: 72 },
+  { img: commercialImg, name: "Corporate Spire", loc: "Noida 62", progress: 45 },
+  { img: apartmentImg, name: "Skyline Towers", loc: "Faridabad", progress: 28 },
+];
+
 
 const SERVICES = [
   {
