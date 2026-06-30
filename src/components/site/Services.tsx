@@ -162,28 +162,70 @@ export function Services() {
               <div className="pointer-events-none absolute -bottom-20 -right-20 h-56 w-56 rounded-full bg-gold/10 blur-3xl transition-all duration-700 group-hover:bg-gold/25" />
 
               <div className="relative">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75" />
-                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-gold" />
+                <div className="flex items-center justify-between gap-3 mb-4">
+                  <div className="flex items-center gap-3">
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75" />
+                      <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-gold" />
+                    </span>
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-gold">Live Now</span>
+                  </div>
+                  <span className="text-[10px] tracking-[0.25em] uppercase text-ivory/50">
+                    {ONGOING_PREVIEW.length} Active Sites
                   </span>
-                  <span className="text-[10px] tracking-[0.3em] uppercase text-gold">Live Now</span>
                 </div>
                 <h3 className="font-display text-3xl font-semibold text-ivory leading-tight">
-                  Explore our ongoing projects in real time.
+                  Watch our sites <span className="gold-gradient-text italic">rise</span> in real time.
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ivory/70">
-                  Step inside active Star Heights sites across Delhi NCR — track progress,
-                  view current developments, and see craftsmanship as it rises, floor by floor.
+                  Track progress on active Star Heights builds across Delhi NCR — floor by floor,
+                  finish by finish.
                 </p>
+
+                {/* Mini gallery of ongoing projects */}
+                <div className="mt-6 grid grid-cols-3 gap-2">
+                  {ONGOING_PREVIEW.map((p) => (
+                    <a
+                      key={p.name}
+                      href="/projects"
+                      className="group/mini relative block overflow-hidden rounded-sm border border-gold/20 transition-all duration-500 hover:border-gold hover:-translate-y-1"
+                    >
+                      <div className="aspect-[4/5] overflow-hidden">
+                        <img
+                          src={p.img}
+                          alt={p.name}
+                          loading="lazy"
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover/mini:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-deep via-charcoal-deep/40 to-transparent" />
+                      </div>
+                      <div className="absolute inset-x-0 bottom-0 p-2">
+                        <div className="text-[9px] font-medium uppercase tracking-wider text-ivory truncate">
+                          {p.name}
+                        </div>
+                        <div className="text-[8px] tracking-wider text-gold/90">{p.progress}%</div>
+                        <div className="mt-1 h-0.5 w-full bg-ivory/15">
+                          <div
+                            className="h-full bg-gold transition-all duration-700"
+                            style={{ width: `${p.progress}%` }}
+                          />
+                        </div>
+                      </div>
+                    </a>
+                  ))}
+                </div>
               </div>
 
-              <div className="relative mt-8 inline-flex items-center gap-3 self-start rounded-full bg-gold px-6 py-3 text-xs font-medium tracking-[0.25em] text-charcoal-deep transition-all duration-500 group-hover:gap-5 group-hover:shadow-[0_15px_40px_-10px_var(--gold)]">
+              <a
+                href="/projects"
+                className="relative mt-6 inline-flex items-center gap-3 self-start rounded-full bg-gold px-6 py-3 text-xs font-medium tracking-[0.25em] text-charcoal-deep transition-all duration-500 group-hover:gap-5 group-hover:shadow-[0_15px_40px_-10px_var(--gold)]"
+              >
                 <Radio className="h-4 w-4" />
                 VIEW LIVE PROJECTS
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:rotate-45" />
-              </div>
+              </a>
             </a>
+
           </Reveal>
         </div>
       </div>
