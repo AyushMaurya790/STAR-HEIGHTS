@@ -8,7 +8,7 @@ import { ArrowRight, Play } from "lucide-react";
 const SLIDES = [
   {
     img: heroImg,
-    eyebrow: "Since 2002 · Delhi NCR",
+    eyebrow: "Since 1991 · Delhi NCR",
     title: (
       <>
         Crafting <span className="gold-gradient-text italic">heights</span>
@@ -86,14 +86,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent,oklch(0.16_0.005_250)_70%)]" />
       </div>
 
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            "linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-        }}
-      />
+      
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-end px-5 pb-20 pt-40 lg:px-10 lg:pb-28">
         <div key={i} className="max-w-4xl animate-fade-in">
@@ -145,7 +138,7 @@ export function Hero() {
         {/* Bottom stat strip */}
         <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-gold/15 bg-charcoal/40 backdrop-blur-md md:grid-cols-4">
           {[
-            ["23+", "Years of Legacy"],
+            ["34+", "Years of Legacy"],
             ["180+", "Projects Delivered"],
             ["5M+", "Sq.Ft Constructed"],
             ["100%", "On-Time Delivery"],

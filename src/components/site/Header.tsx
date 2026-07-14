@@ -20,22 +20,34 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+  className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ${
           scrolled
-            ? "border-b border-gold/15 bg-background/85 backdrop-blur-xl py-3"
-            : "py-5 bg-transparent"
+  ? "border-b border-gold/15 bg-background/95 backdrop-blur-xl py-3"
+  : "bg-transparent py-5"
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 lg:px-10">
           <Link to="/" className="flex items-center gap-3 group min-w-0">
-            <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full ring-1 ring-gold/40">
+            <div className="relative h-15 w-15 shrink-0 overflow-hidden rounded-full ring-1 ring-gold/40">
               <img src={SITE.logo} alt="Star Heights" className="h-full w-full object-cover" />
             </div>
             <div className="hidden sm:flex flex-col leading-tight min-w-0">
-              <span className="font-display text-[15px] font-semibold tracking-wide text-foreground truncate">
-                STAR HEIGHTS
-              </span>
-              <span className="text-[10px] tracking-[0.3em] text-gold/90">CONSTRUCTION CO.</span>
+              <span
+  className={`font-display text-[15px] font-semibold tracking-wide truncate transition-all duration-500 ease-in-out ${
+    scrolled
+      ? "text-black"
+      : "bg-gradient-to-r from-[#F8E08A] via-[#D4AF37] to-[#B8860B] bg-clip-text text-transparent"
+  }`}
+>
+  STAR HEIGHTS
+</span>
+              <span
+  className={`text-[10px] tracking-[0.3em] text-gold transition-all duration-500 ease-in-out ${
+    scrolled ? "font-bold" : "font-normal"
+  }`}
+>
+  CONSTRUCTION CO.
+</span>
             </div>
           </Link>
 
@@ -46,7 +58,11 @@ export function Header() {
                 to={n.to}
                 activeOptions={{ exact: true }}
                 activeProps={{ className: "text-gold" }}
-                className="relative px-4 py-2 text-sm text-foreground/80 hover:text-gold transition-colors after:absolute after:left-1/2 after:bottom-1 after:h-px after:w-0 after:-translate-x-1/2 after:bg-gold after:transition-all hover:after:w-6"
+                className={`relative px-4 py-2 text-sm transition-colors after:absolute after:left-1/2 after:bottom-1 after:h-px after:w-0 after:-translate-x-1/2 after:bg-gold after:transition-all hover:after:w-6 ${
+  scrolled
+    ? "text-black hover:text-gold"
+    : "text-black hover:text-gold"
+}`}
               >
                 {n.label}
               </Link>

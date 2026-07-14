@@ -18,15 +18,7 @@ const COMMITMENTS = [
 export function About({ noHeader = false }: { noHeader?: boolean }) {
   return (
     <section id="about" className="relative bg-ivory py-28 lg:py-40 overflow-hidden">
-      {/* faint architectural grid */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(var(--charcoal-deep) 1px, transparent 1px), linear-gradient(90deg, var(--charcoal-deep) 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-        }}
-      />
+      
       {/* gold corner accents */}
       <div className="pointer-events-none absolute top-10 left-10 h-20 w-20 border-l-2 border-t-2 border-gold/30" />
       <div className="pointer-events-none absolute bottom-10 right-10 h-20 w-20 border-r-2 border-b-2 border-gold/30" />
@@ -52,14 +44,14 @@ export function About({ noHeader = false }: { noHeader?: boolean }) {
                 Vinod Heights · Delhi NCR
               </div>
               <div className="text-[10px] tracking-[0.3em] uppercase text-gold">
-                Est. 2002
+                Est. 1991
               </div>
             </div>
 
             {/* Floating years badge — pinned to image, top-right */}
             <div className="absolute top-5 right-5 bg-charcoal-deep/95 backdrop-blur border border-gold/40 rounded-sm px-5 py-4 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)]">
               <div className="flex items-end gap-1.5">
-                <div className="font-display text-4xl font-semibold gold-gradient-text leading-none">23</div>
+                <div className="font-display text-4xl font-semibold gold-gradient-text leading-none">34</div>
                 <div className="font-display text-xl text-gold pb-0.5">+</div>
               </div>
               <div className="mt-2 text-[9px] tracking-[0.25em] uppercase text-ivory/70 leading-tight max-w-[110px]">
@@ -87,23 +79,33 @@ export function About({ noHeader = false }: { noHeader?: boolean }) {
           <Reveal delay={noHeader ? 0 : 120}>
             <div className="mt-8 max-w-prose space-y-6 text-[15px] md:text-base leading-[1.85] text-foreground/75 [hyphens:auto] text-left md:text-justify">
               <p>
-                Founded in <span className="text-foreground font-medium">1991</span> by visionary directors{" "}
-                <span className="text-foreground font-medium">Mr. Amjad Khan</span> and{" "}
-                <span className="text-foreground font-medium">Mr. Afsar Khan</span>, Star Heights has built a
-                distinguished construction legacy spanning over 35 years. From premium private residences
-                and commercial landmarks to institutional facilities, hospitality projects, and large-scale
-                residential developments across Delhi NCR, we have consistently delivered excellence at
-                every stage of construction.
-              </p>
-              <p>
-                As a comprehensive construction partner, Star Heights brings together architects, civil
-                engineers, and project management experts under one roof. Our integrated approach ensures
-                seamless execution, superior quality, timely delivery, and cost-effective solutions —
-                transforming ideas into enduring structures that exceed expectations.
-              </p>
+  Founded in <span className="text-foreground font-medium">1991</span> by
+  visionary directors{" "}
+  <span className="text-foreground font-medium">Mr. Amjad Khan</span> and{" "}
+  <span className="text-foreground font-medium">Mr. Afsar Khan</span>,
+  <span className="text-foreground font-medium"> Star Heights</span> has been
+  delivering excellence in construction for over{" "}
+  <span className="text-foreground font-medium">35 years</span>. With a strong
+  presence across <span className="text-foreground font-medium">Delhi NCR</span>,
+  we have successfully completed a wide range of residential, commercial,
+  institutional, hospitality, and large-scale development projects.
+</p>
+
+<p>
+  As a trusted construction partner, we bring together experienced architects,
+  engineers, and project management professionals to deliver high-quality,
+  cost-effective, and timely solutions. Our integrated approach, combined with
+  a commitment to precision, innovation, and superior craftsmanship, ensures
+  every project is built to the highest standards.
+</p>
+
+<p>
+  At Star Heights, we don't just construct buildings—we create lasting spaces
+  that reflect quality, reliability, and excellence.
+</p>
             </div>
             <p className="mt-7 max-w-prose font-display text-lg md:text-xl italic gold-gradient-text leading-snug">
-              Building trust. Delivering quality. Creating landmarks since 1991.
+              Building excellence. Inspiring trust. Creating landmarks since 1991.
             </p>
           </Reveal>
 
@@ -150,7 +152,7 @@ export function About({ noHeader = false }: { noHeader?: boolean }) {
           <Reveal delay={300}>
             <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-px bg-gold/40 overflow-hidden rounded-sm border border-gold/30">
               {[
-                ["Est.", "2002"],
+                ["Est.", "1991"],
                 ["HQ", "Delhi NCR"],
                 ["Region", "Pan-NCR"],
                 ["Focus", "Turnkey"],

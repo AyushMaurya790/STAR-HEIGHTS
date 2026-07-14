@@ -12,7 +12,60 @@ const WARRANTIES = [
 export function Contact() {
   const [sent, setSent] = useState(false);
   return (
-    <section id="contact" className="relative bg-cream py-28 lg:py-40">
+    <section
+  id="contact"
+  className="relative overflow-hidden py-28 lg:py-40"
+  style={{
+    background:
+      "radial-gradient(circle at top, #3a3a3a 0%, #262626 45%, #1a1a1a 100%)",
+  }}
+>
+  {/* Premium Background */}
+<div className="absolute inset-0 pointer-events-none overflow-hidden">
+
+  {/* Golden Grid */}
+  <div
+    className="absolute inset-0 opacity-[0.05]"
+    style={{
+      backgroundImage: `
+        linear-gradient(rgba(212,175,55,.18) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,175,55,.18) 1px, transparent 1px)
+      `,
+      backgroundSize: "80px 80px",
+    }}
+  />
+
+  {/* Left Building */}
+  <svg
+    className="absolute bottom-0 left-0 w-[420px] opacity-[0.08]"
+    viewBox="0 0 420 260"
+    fill="none"
+  >
+    <path
+      d="M20 260V120H80V60H150V150H220V90H300V180H380V260"
+      stroke="#D4AF37"
+      strokeWidth="2"
+    />
+  </svg>
+
+  {/* Right Building */}
+  <svg
+    className="absolute bottom-0 right-0 w-[500px] opacity-[0.08]"
+    viewBox="0 0 500 260"
+    fill="none"
+  >
+    <path
+      d="M20 260V150H90V80H170V170H240V60H320V140H390V200H470V260"
+      stroke="#D4AF37"
+      strokeWidth="2"
+    />
+  </svg>
+
+  <span className="absolute top-20 left-[15%] text-gold opacity-25">✦</span>
+  <span className="absolute top-36 right-[18%] text-gold opacity-25">✧</span>
+  <span className="absolute bottom-44 left-[35%] text-gold opacity-20">✦</span>
+
+</div>
       <div className="mx-auto max-w-7xl px-5 lg:px-10">
         <div className="grid gap-16 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
           <Reveal>
@@ -20,46 +73,46 @@ export function Contact() {
               <span className="h-px w-10 bg-gold" />
               <span className="eyebrow">Get In Touch</span>
             </div>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] text-foreground">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] text-white">
               Let's build something
               <br />
               <span className="gold-gradient-text italic">remarkable</span>.
             </h2>
-            <p className="mt-6 text-foreground/70 leading-relaxed max-w-md">
+            <p className="mt-6 text-white/75 leading-relaxed max-w-md">
               Schedule a consultation with our project advisory team. We respond
               to every enquiry within one business day.
             </p>
 
             <div className="mt-10 space-y-6">
               <div className="flex items-start gap-4">
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-sm border border-gold/40 bg-gold/10 text-gold">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-md border border-gold/70 bg-gradient-to-br from-gold/20 to-transparent text-gold shadow-[0_0_18px_rgba(212,175,55,0.18)] backdrop-blur-sm transition-all duration-500 hover:shadow-[0_0_40px_rgba(212,175,55,0.45)] hover:border-gold hover:scale-110">
                   <MapPin className="h-4 w-4" />
                 </div>
                 <div>
-                  <div className="text-[10px] tracking-[0.3em] uppercase text-foreground/55">Headquarters</div>
-                  <div className="mt-1 text-sm text-foreground/90">{SITE.address}</div>
+                  <div className="text-[10px] tracking-[0.3em] uppercase text-white font-semibold">Headquarters</div>
+                  <div className="mt-1 text-sm text-white/85">{SITE.address}</div>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-sm border border-gold/40 bg-gold/10 text-gold">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-md border border-gold/70 bg-gradient-to-br from-gold/20 to-transparent text-gold shadow-[0_0_18px_rgba(212,175,55,0.18)] backdrop-blur-sm transition-all duration-500 hover:shadow-[0_0_40px_rgba(212,175,55,0.45)] hover:border-gold hover:scale-110">
                   <Phone className="h-4 w-4" />
                 </div>
                 <div>
-                  <div className="text-[10px] tracking-[0.3em] uppercase text-foreground/55">Call</div>
+                  <div className="text-[10px] tracking-[0.3em] uppercase text-white font-semibold">Call</div>
                   {SITE.phones.map((p) => (
-                    <a key={p} href={`tel:${p.replace(/\s/g, "")}`} className="block mt-1 text-sm text-foreground/90 hover:text-gold">
+                    <a key={p} href={`tel:${p.replace(/\s/g, "")}`} className="block mt-1 text-sm text-white/85 hover:text-gold">
                       {p}
                     </a>
                   ))}
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-sm border border-gold/40 bg-gold/10 text-gold">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-md border border-gold/70 bg-gradient-to-br from-gold/20 to-transparent text-gold shadow-[0_0_18px_rgba(212,175,55,0.18)] backdrop-blur-sm transition-all duration-500 hover:shadow-[0_0_40px_rgba(212,175,55,0.45)] hover:border-gold hover:scale-110">
                   <Mail className="h-4 w-4" />
                 </div>
                 <div>
-                  <div className="text-[10px] tracking-[0.3em] uppercase text-foreground/55">Email</div>
-                  <a href={`mailto:${SITE.email}`} className="block mt-1 text-sm text-foreground/90 hover:text-gold">
+                  <div className="text-[10px] tracking-[0.3em] uppercase text-white font-semibold">Email</div>
+                  <a href={`mailto:${SITE.email}`} className="block mt-1 text-sm text-white/85 hover:text-gold">
                     {SITE.email}
                   </a>
                 </div>
@@ -85,8 +138,12 @@ export function Contact() {
               }}
               className="rounded-sm border border-foreground/10 bg-ivory p-8 lg:p-10 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.25)]"
             >
-              <h3 className="font-display text-2xl font-semibold text-foreground">Project Enquiry</h3>
-              <p className="mt-2 text-sm text-foreground/65">Share a few details and we'll be in touch.</p>
+              <h3 className="font-display text-2xl font-semibold bg-gradient-to-r from-[#C98600] via-[#E0A51A] to-[#F3C857] bg-clip-text text-transparent">
+  Project Enquiry
+</h3>
+              <p className="mt-2 text-sm text-black/70">
+  Share a few details and we'll be in touch.
+</p>
 
               <div className="mt-8 grid gap-5">
                 {[
@@ -95,7 +152,7 @@ export function Contact() {
                   { l: "Phone", t: "tel", p: "+91 98XXX XXXXX" },
                 ].map((f) => (
                   <label key={f.l} className="block">
-                    <span className="text-[10px] tracking-[0.3em] uppercase text-foreground/60">{f.l}</span>
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-white/60">{f.l}</span>
                     <input
                       required
                       type={f.t}
@@ -137,8 +194,14 @@ export function Contact() {
 
         {/* Full-width premium map */}
         <Reveal delay={200}>
-          <div className="mt-20 relative overflow-hidden rounded-sm border border-gold/30 shadow-[0_40px_120px_-50px_rgba(0,0,0,0.3)]">
-            <div className="aspect-[21/9] w-full">
+          <div
+  className="relative mt-20 overflow-hidden border-y border-gold/20 shadow-[0_40px_120px_-50px_rgba(0,0,0,0.3)]"
+  style={{
+    width: "100vw",
+    marginLeft: "calc(50% - 50vw)",
+  }}
+>
+            <div className="h-[650px] w-full">
               <iframe
                 title="Star Heights HQ"
                 src="https://www.google.com/maps?q=D+500+West+Vinod+Nagar+IP+Extension+Delhi+110092&output=embed"

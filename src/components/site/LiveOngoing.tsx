@@ -1,169 +1,245 @@
+import heroBanner from "@/assets/live-projects/hero-banner.png";
 import { Reveal } from "./Reveal";
-import { MapPin, Calendar, ArrowUpRight, Radio } from "lucide-react";
-import residentialImg from "@/assets/project-residential.jpg";
-import commercialImg from "@/assets/project-commercial.jpg";
-import apartmentImg from "@/assets/project-apartment.jpg";
-
+import { Building2, HardHat, MapPin, Clock3 } from "lucide-react";
+import live01 from "@/assets/live-projects/live-01.jpg";
+import live02 from "@/assets/live-projects/live-02.jpg";
+import live03 from "@/assets/live-projects/live-03.jpg";
+import live04 from "@/assets/live-projects/live-04.jpg";
+import live05 from "@/assets/live-projects/live-05.jpg";
+import live06 from "@/assets/live-projects/live-06.jpg";
+import live07 from "@/assets/live-projects/live-07.jpg";
+import live08 from "@/assets/live-projects/live-08.jpg";
+import live09 from "@/assets/live-projects/live-09.jpg";
+import live10 from "@/assets/live-projects/live-10.jpg";
+import live11 from "@/assets/live-projects/live-11.jpg";
+import live12 from "@/assets/live-projects/live-12.jpg";
+import live13 from "@/assets/live-projects/live-13.jpg";
+import live14 from "@/assets/live-projects/live-14.jpg";
+import live15 from "@/assets/live-projects/live-15.jpg";
+import live16 from "@/assets/live-projects/live-16.jpg";
+import live17 from "@/assets/live-projects/live-17.jpg";
+import live18 from "@/assets/live-projects/live-18.jpg";
+import live19 from "@/assets/live-projects/live-19.jpg";
+import live20 from "@/assets/live-projects/live-20.jpg";
+import live21 from "@/assets/live-projects/live-21.jpg";
+import live22 from "@/assets/live-projects/live-22.jpg";
+import live23 from "@/assets/live-projects/live-23.jpg";
+import live24 from "@/assets/live-projects/live-24.jpg";
 const LIVE = [
   {
-    img: residentialImg,
-    name: "Vinod Heights Residences",
-    type: "Residential",
-    loc: "East Delhi",
-    start: "Mar 2024",
-    handover: "Q4 2025",
-    progress: 72,
-    stage: "Interior Finishing",
+    img: live01,
+    name: "Live Project 01",
   },
   {
-    img: commercialImg,
-    name: "Noida Corporate Spire",
-    type: "Commercial",
-    loc: "Noida Sector 62",
-    start: "Aug 2024",
-    handover: "Q2 2026",
-    progress: 45,
-    stage: "Structural / MEP",
+    img: live02,
+    name: "Live Project 02",
   },
   {
-    img: apartmentImg,
-    name: "Faridabad Skyline Towers",
-    type: "Apartment Development",
-    loc: "Faridabad",
-    start: "Jan 2025",
-    handover: "Q3 2026",
-    progress: 28,
-    stage: "Foundation & RCC",
+    img: live03,
+    name: "Live Project 03",
+  },
+  {
+    img: live04,
+    name: "Live Project 04",
+  },
+  {
+    img: live05,
+    name: "Live Project 05",
+  },
+  {
+    img: live06,
+    name: "Live Project 06",
+  },
+  {
+    img: live07,
+    name: "Live Project 07",
+  },
+  {
+    img: live08,
+    name: "Live Project 08",
+  },
+  {
+    img: live09,
+    name: "Live Project 09",
+  },
+  {
+    img: live10,
+    name: "Live Project 10",
+  },
+  {
+    img: live11,
+    name: "Live Project 11",
+  },
+  {
+    img: live12,
+    name: "Live Project 12",
+  },
+  {
+    img: live13,
+    name: "Live Project 13",
+  },
+  {
+    img: live14,
+    name: "Live Project 14",
+  },
+  {
+    img: live15,
+    name: "Live Project 15",
+  },
+  {
+    img: live16,
+    name: "Live Project 16",
+  },
+  {
+    img: live17,
+    name: "Live Project 17",
+  },
+  {
+    img: live18,
+    name: "Live Project 18",
+  },
+  {
+    img: live19,
+    name: "Live Project 19",
+  },
+  {
+    img: live20,
+    name: "Live Project 20",
+  },
+  {
+    img: live21,
+    name: "Live Project 21",
+  },
+  {
+    img: live22,
+    name: "Live Project 22",
+  },
+  {
+    img: live23,
+    name: "Live Project 23",
+  },
+  {
+    img: live24,
+    name: "Live Project 24",
   },
 ];
 
 export function LiveOngoing() {
   return (
-    <section id="live-ongoing" className="relative bg-charcoal-deep py-28 lg:py-36 overflow-hidden">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage:
-            "linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-        }}
-      />
+    <section
+  id="live-ongoing"
+  className="relative bg-charcoal-deep overflow-hidden pt-24 pb-32"
+>
+    
       <div className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-gold/10 blur-3xl" />
 
-      <div className="relative mx-auto max-w-7xl px-5 lg:px-10">
-        <div className="mb-14 grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-end">
-          <Reveal>
-            <div className="flex items-center gap-3 mb-6">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75" />
-                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-gold" />
-              </span>
-              <span className="text-[10px] tracking-[0.3em] uppercase text-gold font-semibold">Live Ongoing</span>
-            </div>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] text-ivory">
-              Active sites,
-              <br />
-              <span className="gold-gradient-text italic">rising now</span>.
-            </h2>
-          </Reveal>
-          <Reveal delay={120}>
-            <p className="text-ivory/70 leading-relaxed lg:text-right">
-              Real progress, real timelines. Track the developments Star Heights
-              is delivering across Delhi NCR — each one moving on schedule,
-              under the same standard of craft and supervision.
-            </p>
-          </Reveal>
-        </div>
+      <div className="pointer-events-none absolute -bottom-40 -left-40 h-[32rem] w-[32rem] rounded-full bg-gold/5 blur-[180px]" />
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div className="pointer-events-none absolute top-1/2 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/[0.03] blur-[220px]" />
+
+<Reveal>
+  <div className="w-full overflow-hidden">
+    <img
+      src={heroBanner}
+      alt="Live Projects Hero Banner"
+      className="block w-full h-auto"
+    />
+  </div>
+</Reveal>
+
+      <div className="relative mx-auto max-w-7xl px-5 lg:px-10">
+       
+          
+
+<div className="mt-24 mb-10">
+
+
+  <div className="flex items-center gap-4 mb-6">
+    <span className="h-[2px] w-20 rounded-full bg-gradient-to-r from-gold via-gold/70 to-transparent"></span>
+    <span className="text-[12px] uppercase tracking-[0.45em] text-gold font-bold">
+      Live Project Gallery
+    </span>
+  </div>
+
+  <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-ivory">
+    Active Construction Updates
+  </h2>
+
+  <div className="mt-6 mb-6 h-[3px] w-28 rounded-full bg-gradient-to-r from-gold via-gold/60 to-transparent"></div>
+
+  <p className="mt-6 max-w-3xl text-lg leading-relaxed text-ivory/65">
+    Explore real construction progress through our latest on-site
+    photographs, showcasing every phase from foundation to finishing.
+  </p>
+</div>
+        <div className="grid gap-8 md:gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {LIVE.map((p, i) => (
             <Reveal key={p.name} delay={i * 120}>
-              <article className="group relative h-full overflow-hidden rounded-sm border border-gold/20 bg-charcoal-deep/60 backdrop-blur transition-all duration-500 hover:border-gold hover:-translate-y-2 hover:shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)]">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={p.img}
-                    alt={p.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-[1500ms] group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal-deep via-charcoal-deep/30 to-transparent" />
-                  <div className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-charcoal-deep/80 backdrop-blur border border-gold/40 px-3 py-1">
-                    <span className="relative flex h-1.5 w-1.5">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75" />
-                      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-gold" />
-                    </span>
-                    <span className="text-[9px] tracking-[0.25em] uppercase text-gold">Live</span>
-                  </div>
-                  <div className="absolute top-4 right-4 rounded-full bg-gold/95 px-3 py-1 text-[10px] font-medium tracking-[0.2em] uppercase text-charcoal-deep">
-                    {p.type}
-                  </div>
-                </div>
+              <article className="group relative cursor-pointer overflow-hidden rounded-[28px] border border-gold/15 bg-charcoal-deep transition-all duration-700 hover:-translate-y-3 hover:border-gold/70 hover:shadow-[0_35px_90px_rgba(212,160,23,0.22)]">
 
-                <div className="p-6">
-                  <h3 className="font-display text-xl font-semibold text-ivory leading-snug">{p.name}</h3>
-                  <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-ivory/65">
-                    <span className="inline-flex items-center gap-1.5">
-                      <MapPin className="h-3.5 w-3.5 text-gold" />
-                      {p.loc}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <Calendar className="h-3.5 w-3.5 text-gold" />
-                      {p.start} → {p.handover}
-                    </span>
-                  </div>
+  <div className="relative aspect-[4/5] overflow-hidden">
 
-                  {/* Progress */}
-                  <div className="mt-5">
-                    <div className="flex items-center justify-between text-[10px] tracking-[0.25em] uppercase mb-2">
-                      <span className="text-ivory/55">{p.stage}</span>
-                      <span className="text-gold font-medium">{p.progress}%</span>
-                    </div>
-                    <div className="h-1 w-full overflow-hidden rounded-full bg-ivory/10">
-                      <div
-                        className="h-full rounded-full bg-gradient-to-r from-gold/70 to-gold transition-all duration-1000"
-                        style={{ width: `${p.progress}%` }}
-                      />
-                    </div>
-                  </div>
+  <div className="absolute top-5 left-5 z-20">
+  <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-gold to-yellow-400 px-4 py-2 backdrop-blur-md shadow-[0_15px_35px_rgba(212,160,23,0.55)] transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_20px_45px_rgba(212,160,23,0.7)]">
+    <span className="relative flex h-2.5 w-2.5">
+      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
+      <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-white"></span>
+    </span>
 
-                  <a
-                    href="/contact"
-                    className="mt-6 inline-flex items-center gap-2 text-[10px] tracking-[0.3em] uppercase text-gold border-b border-gold/40 pb-1 transition-all hover:gap-3 hover:border-gold"
-                  >
-                    Site Walkthrough
-                    <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
-                </div>
-              </article>
+    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-black">
+      LIVE
+    </span>
+
+  </div>
+</div>
+
+    <img
+      src={p.img}
+      alt={p.name}
+      className="h-full w-full object-cover transition-all duration-[1800ms] ease-out group-hover:scale-110 group-hover:brightness-110"
+    />
+
+    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent opacity-90 group-hover:opacity-100 transition-all duration-700"></div>
+
+    <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/90 via-black/35 to-transparent transition-all duration-500 group-hover:pb-10">
+
+    </div>
+  </div>
+
+</article>
             </Reveal>
           ))}
         </div>
 
-        {/* Bottom CTA back to consultation */}
-        <Reveal delay={200}>
-          <div className="mt-16 relative overflow-hidden rounded-sm border border-gold/30 bg-ivory/[0.03] p-8 md:p-12 grid gap-6 md:grid-cols-[1.4fr_auto] md:items-center">
-            <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-gold/10 blur-3xl" />
-            <div className="relative">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="h-px w-8 bg-gold" />
-                <span className="text-[10px] tracking-[0.3em] uppercase text-gold">Next Step</span>
-              </div>
-              <h3 className="font-display text-2xl md:text-3xl font-semibold text-ivory leading-tight">
-                Considering a build of your own?
-                <span className="block gold-gradient-text italic">Let's design the brief together.</span>
-              </h3>
-            </div>
-            <a
-              href="/contact"
-              className="relative inline-flex items-center gap-3 self-start md:self-center rounded-full bg-gold px-7 py-3.5 text-xs font-medium tracking-[0.25em] text-charcoal-deep transition-all duration-500 hover:gap-5 hover:shadow-[0_15px_40px_-10px_var(--gold)]"
-            >
-              <Radio className="h-4 w-4" />
-              BOOK CONSULTATION
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-500 hover:rotate-45" />
-            </a>
-          </div>
-        </Reveal>
+        
       </div>
+      <div className="mt-24 rounded-[32px] border border-gold/20 bg-gradient-to-r from-white/[0.04] via-white/[0.02] to-transparent backdrop-blur-xl overflow-hidden">
+
+  <div className="flex flex-col lg:flex-row items-center justify-between gap-10 p-10 lg:p-14">
+
+    <div>
+
+      <div className="text-gold text-sm uppercase tracking-[0.35em] font-semibold">
+        WANT TO SEE MORE?
+      </div>
+
+      <h3 className="mt-4 font-display text-4xl md:text-5xl text-ivory">
+        Schedule A Site Visit
+      </h3>
+
+      <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ivory/65">
+        Get in touch with us for live construction updates, project walkthroughs and personalized consultations.
+      </p>
+
+    </div>
+
+    <button className="rounded-xl bg-gold px-10 py-5 text-sm font-semibold uppercase tracking-[0.25em] text-black transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_40px_rgba(212,160,23,0.4)]">
+      CONTACT US →
+    </button>
+
+  </div>
+
+</div>
     </section>
   );
 }

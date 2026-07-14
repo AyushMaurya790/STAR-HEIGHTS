@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageShell } from "@/components/site/PageShell";
-import { Projects } from "@/components/site/Projects";
+
+import { Header } from "@/components/site/Header";
+import { Footer } from "@/components/site/Footer";
 import { LiveOngoing } from "@/components/site/LiveOngoing";
 
 export const Route = createFileRoute("/projects")({
@@ -27,17 +28,10 @@ export const Route = createFileRoute("/projects")({
 
 function ProjectsPage() {
   return (
-    <PageShell
-      eyebrow="Featured Portfolio & Live Sites"
-      title={
-        <>
-          Landmarks we've <span className="gold-gradient-text italic">delivered</span> — and the ones rising now.
-        </>
-      }
-      intro="A selection of recent residential, commercial and apartment developments — paired with live ongoing builds across Delhi NCR, each engineered with the same precision and finished with the same obsession for detail."
-    >
-      <Projects />
+    <>
+      <Header />
       <LiveOngoing />
-    </PageShell>
+      <Footer />
+    </>
   );
 }

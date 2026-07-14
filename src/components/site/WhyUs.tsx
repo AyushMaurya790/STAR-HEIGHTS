@@ -29,7 +29,7 @@ function Counter({ end, suffix = "" }: { end: number; suffix?: string }) {
 }
 
 const PILLARS = [
-  { icon: ShieldCheck, title: "Trust", desc: "Transparent contracts, audited finances and a 23-year clean track record." },
+  { icon: ShieldCheck, title: "Trust", desc: "Transparent contracts, audited finances and a 35-year clean track record." },
   { icon: HardHat, title: "Experience", desc: "Two decades of structural engineering across every NCR sub-market." },
   { icon: Clock3, title: "Timely Delivery", desc: "Disciplined milestone tracking with 100% on-time handover history." },
   { icon: Award, title: "Premium Quality", desc: "Specification-grade materials, RERA-aligned QA, and final-finish obsession." },
@@ -54,7 +54,7 @@ export function WhyUs() {
 
         <div className="grid gap-px bg-gold/10 overflow-hidden rounded-sm border border-gold/15 md:grid-cols-4">
           {[
-            { n: 23, s: "+", l: "Years" },
+            { n: 34, s: "+", l: "Years" },
             { n: 180, s: "+", l: "Projects" },
             { n: 5, s: "M+", l: "Sq.Ft Built" },
             { n: 100, s: "%", l: "On-Time" },

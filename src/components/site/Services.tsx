@@ -3,9 +3,10 @@ import { Reveal } from "./Reveal";
 import residentialImg from "@/assets/project-residential.jpg";
 import commercialImg from "@/assets/project-commercial.jpg";
 import apartmentImg from "@/assets/project-apartment.jpg";
+import heroBanner from "@/assets/live-projects/hero-banner.png";
 
 const ONGOING_PREVIEW = [
-  { img: residentialImg, name: "Vinod Heights", loc: "East Delhi", progress: 72 },
+  { img: heroBanner, name: "Vinod Heights", loc: "East Delhi", progress: 72 },
   { img: commercialImg, name: "Corporate Spire", loc: "Noida 62", progress: 45 },
   { img: apartmentImg, name: "Skyline Towers", loc: "Faridabad", progress: 28 },
 ];
@@ -47,15 +48,7 @@ const SERVICES = [
 export function Services() {
   return (
     <section id="services" className="relative py-28 lg:py-40 bg-cream overflow-hidden">
-      {/* Architectural grid */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(var(--charcoal-deep) 1px, transparent 1px), linear-gradient(90deg, var(--charcoal-deep) 1px, transparent 1px)",
-          backgroundSize: "100px 100px",
-        }}
-      />
+      
       {/* Floating gold orb */}
       <div className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-gold/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-charcoal-deep/5 blur-3xl" />
@@ -168,9 +161,7 @@ export function Services() {
                     </span>
                     <span className="text-[10px] tracking-[0.3em] uppercase text-gold">Live Now</span>
                   </div>
-                  <span className="text-[10px] tracking-[0.25em] uppercase text-ivory/50">
-                    {ONGOING_PREVIEW.length} Active Sites
-                  </span>
+                  
                 </div>
                 <h3 className="font-display text-3xl font-semibold text-ivory leading-tight">
                   Watch our sites <span className="gold-gradient-text italic">rise</span> in real time.
@@ -181,37 +172,15 @@ export function Services() {
                 </p>
 
                 {/* Mini gallery of ongoing projects */}
-                <div className="mt-6 grid grid-cols-3 gap-2">
-                  {ONGOING_PREVIEW.map((p) => (
-                    <a
-                      key={p.name}
-                      href="/projects"
-                      className="group/mini relative block overflow-hidden rounded-sm border border-gold/20 transition-all duration-500 hover:border-gold hover:-translate-y-1"
-                    >
-                      <div className="aspect-[4/5] overflow-hidden">
-                        <img
-                          src={p.img}
-                          alt={p.name}
-                          loading="lazy"
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover/mini:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-deep via-charcoal-deep/40 to-transparent" />
-                      </div>
-                      <div className="absolute inset-x-0 bottom-0 p-2">
-                        <div className="text-[9px] font-medium uppercase tracking-wider text-ivory truncate">
-                          {p.name}
-                        </div>
-                        <div className="text-[8px] tracking-wider text-gold/90">{p.progress}%</div>
-                        <div className="mt-1 h-0.5 w-full bg-ivory/15">
-                          <div
-                            className="h-full bg-gold transition-all duration-700"
-                            style={{ width: `${p.progress}%` }}
-                          />
-                        </div>
-                      </div>
-                    </a>
-                  ))}
-                </div>
+                <div className="mt-6 overflow-hidden rounded-xl border border-gold/20">
+  <a href="/projects" className="block">
+    <img
+      src={heroBanner}
+      alt="Live Construction Progress"
+      className="w-full h-auto object-contain"
+    />
+  </a>
+</div>
               </div>
 
               <a

@@ -1,15 +1,15 @@
-import logoAsset from "@/assets/logo.jpg.asset.json";
+import logoAsset from "@/assets/Screenshot 2026-06-30 060558.png";
 
 export const SITE = {
   name: "Star Heights Constructions Co.",
   shortName: "Star Heights",
-  established: 2002,
+  established: 1991,
   tagline: "Building Tomorrow's Skyline",
   address: "D 500, West Vinod Nagar, I.P. Extension, Delhi – 110092",
   phones: ["+91 99108 07582", "+91 98100 52487"],
   email: "contact@starheights.co",
   region: "Delhi NCR · Noida · Greater Noida · Ghaziabad · Faridabad",
-  logo: logoAsset.url,
+  logo: logoAsset,
 };
 
 export const NAV: { label: string; to: string }[] = [

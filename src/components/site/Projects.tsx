@@ -1,11 +1,13 @@
 import residential from "@/assets/project-residential.jpg";
 import commercial from "@/assets/project-commercial.jpg";
 import apartment from "@/assets/project-apartment.jpg";
+import heroBanner from "@/assets/live-projects/hero-banner.png";
 import { Reveal } from "./Reveal";
 import { MapPin } from "lucide-react";
 
+
 const PROJECTS = [
-  { img: residential, title: "Vinod Heights Residences", tag: "Residential", loc: "East Delhi", year: "2024" },
+  { img: heroBanner, title: "Vinod Heights Residences", tag: "Residential", loc: "East Delhi", year: "2024" },
   { img: commercial, title: "Noida Corporate Spire", tag: "Commercial", loc: "Noida Sector 62", year: "2023" },
   { img: apartment, title: "Faridabad Skyline Towers", tag: "Apartment Development", loc: "Faridabad", year: "2025" },
 ];

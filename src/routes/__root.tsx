@@ -1,3 +1,4 @@
+import { Header } from "@/components/site/Header";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -118,9 +119,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ShadowCursor />
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
-    </QueryClientProvider>
+  <ShadowCursor />
+
+  <Outlet />
+</QueryClientProvider>
   );
 }

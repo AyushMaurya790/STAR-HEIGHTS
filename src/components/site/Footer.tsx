@@ -10,7 +10,7 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-3">
               <div className="h-14 w-14 overflow-hidden rounded-full ring-1 ring-gold/40">
-                <img src={SITE.logo} alt="Star Heights" className="h-full w-full object-cover" />
+                <img src={SITE.logo} alt="Star Heights" className="h-auto w-auto object-cover" />
               </div>
               <div className="leading-tight">
                 <div className="font-display text-base font-semibold text-ivory">STAR HEIGHTS</div>
@@ -19,14 +19,34 @@ export function Footer() {
             </div>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-ivory/65">
               A premier Delhi NCR construction house — building residential,
-              commercial and apartment developments with precision since 2002.
+              commercial and apartment developments with precision since 1991.
             </p>
             <div className="mt-6 flex gap-3">
-              {[Facebook, Instagram, Linkedin].map((I, i) => (
-                <a key={i} href="#" aria-label="Social" className="grid h-10 w-10 place-items-center rounded-full border border-gold/25 text-ivory/75 hover:bg-gold hover:text-charcoal-deep hover:border-gold transition-all">
-                  <I className="h-4 w-4" />
-                </a>
-              ))}
+              {[
+  {
+    icon: Facebook,
+    link: "#",
+  },
+  {
+    icon: Instagram,
+    link: "https://www.instagram.com/starheightsconstructions/",
+  },
+  {
+    icon: Linkedin,
+    link: "#",
+  },
+].map(({ icon: I, link }, i) => (
+  <a
+    key={i}
+    href={link}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Social"
+    className="grid h-10 w-10 place-items-center rounded-full border border-gold/25 text-ivory/75 hover:bg-gold hover:text-charcoal-deep hover:border-gold transition-all"
+  >
+    <I className="h-4 w-4" />
+  </a>
+))}
             </div>
           </div>
 
