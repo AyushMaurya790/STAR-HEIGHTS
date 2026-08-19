@@ -1,6 +1,3 @@
-import logoAsset from "@/assets/logo.png";
-
-
 export const SITE = {
   name: "Star Heights Constructions Co.",
   shortName: "Star Heights",
@@ -10,7 +7,7 @@ export const SITE = {
   phones: ["+91 99108 07582", "+91 98100 52487"],
   email: "contact@starheights.co",
   region: "Delhi NCR · Noida · Greater Noida · Ghaziabad · Faridabad",
-  logo: logoAsset,
+  logo: "/logo.png",
 };
 
 export const NAV: { label: string; to: string }[] = [
