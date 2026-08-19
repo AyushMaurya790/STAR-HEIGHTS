@@ -1,4 +1,5 @@
-import logoAsset from "@/assets/Screenshot 2026-06-30 060558.png";
+import logoAsset from "@/assets/logo.png";
+
 
 export const SITE = {
   name: "Star Heights Constructions Co.",
