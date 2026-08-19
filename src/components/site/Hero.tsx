@@ -112,11 +112,11 @@ export function Hero() {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
-              href="#about"
+              href="/gallery"
               className="group inline-flex items-center gap-3 rounded-full border border-ivory/40 px-7 py-4 text-sm font-medium tracking-[0.2em] text-ivory transition-all hover:border-gold hover:text-gold"
             >
               <Play className="h-3.5 w-3.5 fill-current" />
-              OUR STORY
+              OUR GALLERY
             </a>
           </div>
         </div>

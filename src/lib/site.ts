@@ -17,6 +17,7 @@ export const NAV: { label: string; to: string }[] = [
   { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
   { label: "Projects", to: "/projects" },
+  { label: "Gallery", to: "/gallery" },
   { label: "Why Us", to: "/why-us" },
   { label: "Blog", to: "/blog" },
   { label: "Contact", to: "/contact" },

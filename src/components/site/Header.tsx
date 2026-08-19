@@ -58,7 +58,7 @@ export function Header() {
                 to={n.to}
                 activeOptions={{ exact: true }}
                 activeProps={{ className: "text-gold" }}
-                className={`relative px-4 py-2 text-sm transition-colors after:absolute after:left-1/2 after:bottom-1 after:h-px after:w-0 after:-translate-x-1/2 after:bg-gold after:transition-all hover:after:w-6 ${
+                className={`relative px-3 py-2 text-sm transition-colors after:absolute after:left-1/2 after:bottom-1 after:h-px after:w-0 after:-translate-x-1/2 after:bg-gold after:transition-all hover:after:w-6 ${
   scrolled
     ? "text-black hover:text-gold"
     : "text-black hover:text-gold"

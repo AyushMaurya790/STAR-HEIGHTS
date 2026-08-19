@@ -69,6 +69,7 @@ export function Footer() {
               <li>Residential Construction</li>
               <li>Commercial Projects</li>
               <li>Apartment Development</li>
+              <li>Industrial Infrastructure</li>
               <li>Turnkey Execution</li>
               <li>Interior Fit-Out</li>
             </ul>

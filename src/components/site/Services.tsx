@@ -5,6 +5,7 @@ import commercialImg from "@/assets/project-commercial.jpg";
 import apartmentImg from "@/assets/project-apartment.jpg";
 import heroBanner from "@/assets/live-projects/hero-banner.png";
 
+
 const ONGOING_PREVIEW = [
   { img: heroBanner, name: "Vinod Heights", loc: "East Delhi", progress: 72 },
   { img: commercialImg, name: "Corporate Spire", loc: "Noida 62", progress: 45 },
