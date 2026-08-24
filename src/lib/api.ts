@@ -213,3 +213,216 @@ export const clientApi = {
     }
   },
 };
+
+export interface ContactItem {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  projectType?: string;
+  budget?: string;
+  message?: string;
+  status?: string;
+  notes?: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface DashboardStats {
+  success: boolean;
+  counts: {
+    services: number;
+    projects: number;
+    gallery: number;
+    blogs: number;
+    contacts: number;
+    newContacts: number;
+    inProgressProjects: number;
+    completedProjects: number;
+  };
+  charts: {
+    projectCategories: Record<string, number>;
+    contactStatusCounts: Record<string, number>;
+  };
+  recentContacts: ContactItem[];
+  recentProjects: ProjectItem[];
+}
+
+export const adminApi = {
+  // Generic request
+  async request<T = any>(endpoint: string, options: RequestInit = {}): Promise<T> {
+    const isFormData = options.body instanceof FormData;
+    const headers: Record<string, string> = isFormData
+      ? { ...(options.headers as Record<string, string>) }
+      : { "Content-Type": "application/json", ...(options.headers as Record<string, string>) };
+
+    const res = await fetch(`${getApiBaseUrl()}${endpoint}`, {
+      ...options,
+      headers,
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.message || `Request failed with status ${res.status}`);
+    }
+    return data;
+  },
+
+  // Overview Stats
+  async getStats(): Promise<DashboardStats> {
+    return this.request<DashboardStats>("/stats");
+  },
+
+  // Image Upload
+  async uploadImage(file: File): Promise<{ success: boolean; url: string; filename: string }> {
+    const formData = new FormData();
+    formData.append("image", file);
+    return this.request<{ success: boolean; url: string; filename: string }>("/upload", {
+      method: "POST",
+      body: formData,
+    });
+  },
+
+  // Services
+  async getServices(): Promise<ServiceItem[]> {
+    const res = await this.request<{ success: boolean; data: ServiceItem[] }>("/services");
+    return res.data || [];
+  },
+  async createService(data: Partial<ServiceItem>): Promise<ServiceItem> {
+    const res = await this.request<{ success: boolean; data: ServiceItem }>("/services", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+    return res.data;
+  },
+  async updateService(id: string, data: Partial<ServiceItem>): Promise<ServiceItem> {
+    const res = await this.request<{ success: boolean; data: ServiceItem }>(`/services/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(data),
+    });
+    return res.data;
+  },
+  async deleteService(id: string): Promise<boolean> {
+    await this.request(`/services/${id}`, { method: "DELETE" });
+    return true;
+  },
+
+  // Projects
+  async getProjects(): Promise<ProjectItem[]> {
+    const res = await this.request<{ success: boolean; data: ProjectItem[] }>("/projects");
+    return res.data || [];
+  },
+  async createProject(data: Partial<ProjectItem>): Promise<ProjectItem> {
+    const res = await this.request<{ success: boolean; data: ProjectItem }>("/projects", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+    return res.data;
+  },
+  async updateProject(id: string, data: Partial<ProjectItem>): Promise<ProjectItem> {
+    const res = await this.request<{ success: boolean; data: ProjectItem }>(`/projects/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(data),
+    });
+    return res.data;
+  },
+  async deleteProject(id: string): Promise<boolean> {
+    await this.request(`/projects/${id}`, { method: "DELETE" });
+    return true;
+  },
+
+  // Gallery
+  async getGallery(): Promise<GalleryItem[]> {
+    const res = await this.request<{ success: boolean; data: GalleryItem[] }>("/gallery");
+    return res.data || [];
+  },
+  async createGallery(data: Partial<GalleryItem>): Promise<GalleryItem> {
+    const res = await this.request<{ success: boolean; data: GalleryItem }>("/gallery", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+    return res.data;
+  },
+  async updateGallery(id: string, data: Partial<GalleryItem>): Promise<GalleryItem> {
+    const res = await this.request<{ success: boolean; data: GalleryItem }>(`/gallery/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(data),
+    });
+    return res.data;
+  },
+  async deleteGallery(id: string): Promise<boolean> {
+    await this.request(`/gallery/${id}`, { method: "DELETE" });
+    return true;
+  },
+
+  // Blogs
+  async getBlogs(): Promise<BlogItem[]> {
+    const res = await this.request<{ success: boolean; data: BlogItem[] }>("/blogs");
+    return res.data || [];
+  },
+  async createBlog(data: Partial<BlogItem>): Promise<BlogItem> {
+    const res = await this.request<{ success: boolean; data: BlogItem }>("/blogs", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+    return res.data;
+  },
+  async updateBlog(id: string, data: Partial<BlogItem>): Promise<BlogItem> {
+    const res = await this.request<{ success: boolean; data: BlogItem }>(`/blogs/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(data),
+    });
+    return res.data;
+  },
+  async deleteBlog(id: string): Promise<boolean> {
+    await this.request(`/blogs/${id}`, { method: "DELETE" });
+    return true;
+  },
+
+  // Contacts
+  async getContacts(): Promise<ContactItem[]> {
+    const res = await this.request<{ success: boolean; data: ContactItem[] }>("/contacts");
+    return res.data || [];
+  },
+  async updateContact(id: string, data: Partial<ContactItem>): Promise<ContactItem> {
+    const res = await this.request<{ success: boolean; data: ContactItem }>(`/contacts/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(data),
+    });
+    return res.data;
+  },
+  async deleteContact(id: string): Promise<boolean> {
+    await this.request(`/contacts/${id}`, { method: "DELETE" });
+    return true;
+  },
+
+  // Why Us
+  async getWhyUs(): Promise<WhyUsData> {
+    const res = await this.request<{ success: boolean; data: WhyUsData }>("/why-us");
+    return res.data || { counters: [], pillars: [] };
+  },
+  async updateCounters(counters: StatCounter[]): Promise<StatCounter[]> {
+    const res = await this.request<{ success: boolean; data: StatCounter[] }>("/why-us/counters", {
+      method: "PUT",
+      body: JSON.stringify({ counters }),
+    });
+    return res.data;
+  },
+  async createPillar(data: Partial<PillarItem>): Promise<PillarItem> {
+    const res = await this.request<{ success: boolean; data: PillarItem }>("/why-us/pillars", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+    return res.data;
+  },
+  async updatePillar(id: string, data: Partial<PillarItem>): Promise<PillarItem> {
+    const res = await this.request<{ success: boolean; data: PillarItem }>(`/why-us/pillars/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(data),
+    });
+    return res.data;
+  },
+  async deletePillar(id: string): Promise<boolean> {
+    await this.request(`/why-us/pillars/${id}`, { method: "DELETE" });
+    return true;
+  },
+};
