@@ -9,6 +9,24 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 export default defineConfig({
   nitro: {
     preset: process.env.NITRO_PRESET || (process.env.VERCEL ? "vercel" : "node-server"),
+    routeRules: {
+      "/api/**": { proxy: "http://200.141.9.221:5002/api/**" },
+      "/uploads/**": { proxy: "http://200.141.9.221:5002/uploads/**" },
+    },
+  },
+  vite: {
+    server: {
+      proxy: {
+        "/api": {
+          target: "http://200.141.9.221:5002",
+          changeOrigin: true,
+        },
+        "/uploads": {
+          target: "http://200.141.9.221:5002",
+          changeOrigin: true,
+        },
+      },
+    },
   },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).

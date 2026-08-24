@@ -1,15 +1,12 @@
 // Star Heights Client API Service
 function getApiBaseUrl(): string {
   const envUrl = import.meta.env.VITE_API_URL;
-  if (envUrl && !envUrl.includes("5001")) {
+  if (envUrl && !envUrl.includes("5001") && !envUrl.startsWith("http://200.")) {
     return envUrl;
   }
 
-  // When loaded over HTTPS in browser, prevent Mixed Content blocking
+  // When loaded over HTTPS in browser (like Vercel), use relative proxy to eliminate Mixed Content errors
   if (typeof window !== "undefined" && window.location.protocol === "https:") {
-    if (window.location.hostname.includes("starheights")) {
-      return "https://api.starheights.in/api";
-    }
     return "/api";
   }
 

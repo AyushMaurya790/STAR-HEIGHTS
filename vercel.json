@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "http://200.141.9.221:5002/api/:path*"
+    },
+    {
+      "source": "/uploads/:path*",
+      "destination": "http://200.141.9.221:5002/uploads/:path*"
+    }
+  ]
+}
