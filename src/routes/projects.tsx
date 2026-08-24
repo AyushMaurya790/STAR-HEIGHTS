@@ -19,9 +19,9 @@ export const Route = createFileRoute("/projects")({
         content:
           "Featured portfolio plus active construction sites across Delhi NCR, with stage and timeline tracking.",
       },
-      { property: "og:url", content: "https://star-heights-vision.lovable.app/projects" },
+      { property: "og:url", content: "https://starheights.in/projects" },
     ],
-    links: [{ rel: "canonical", href: "https://star-heights-vision.lovable.app/projects" }],
+    links: [{ rel: "canonical", href: "https://starheights.in/projects" }],
   }),
   component: ProjectsPage,
 });

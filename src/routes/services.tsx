@@ -17,9 +17,9 @@ export const Route = createFileRoute("/services")({
         content:
           "End-to-end construction across five practices, with active project tracking and turnkey delivery.",
       },
-      { property: "og:url", content: "https://star-heights-vision.lovable.app/services" },
+      { property: "og:url", content: "https://starheights.in/services" },
     ],
-    links: [{ rel: "canonical", href: "https://star-heights-vision.lovable.app/services" }],
+    links: [{ rel: "canonical", href: "https://starheights.in/services" }],
   }),
   component: ServicesPage,
 });

@@ -1,7 +1,8 @@
-import { MapPin, Phone, Mail, Send, Clock, ShieldCheck } from "lucide-react";
+import { MapPin, Phone, Mail, Send, Clock, ShieldCheck, CheckCircle2, Loader2 } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { Reveal } from "./Reveal";
 import { useState } from "react";
+import { clientApi } from "@/lib/api";
 
 const WARRANTIES = [
   { icon: ShieldCheck, k: "10 Yrs", l: "Construction Warranty" },
@@ -10,7 +11,40 @@ const WARRANTIES = [
 ];
 
 export function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    projectType: "Residential",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setErrorMsg("");
+
+    try {
+      await clientApi.submitContact(formData);
+      setSent(true);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        projectType: "Residential",
+        message: "",
+      });
+      setTimeout(() => setSent(false), 5000);
+    } catch (err: any) {
+      setErrorMsg(err.message || "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section
   id="contact"
@@ -132,38 +166,73 @@ export function Contact() {
 
           <Reveal delay={120}>
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
+              onSubmit={handleSubmit}
               className="rounded-sm border border-foreground/10 bg-ivory p-8 lg:p-10 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.25)]"
             >
               <h3 className="font-display text-2xl font-semibold bg-gradient-to-r from-[#C98600] via-[#E0A51A] to-[#F3C857] bg-clip-text text-transparent">
-  Project Enquiry
-</h3>
+                Project Enquiry
+              </h3>
               <p className="mt-2 text-sm text-black/70">
-  Share a few details and we'll be in touch.
-</p>
+                Share a few details and we'll be in touch.
+              </p>
+
+              {sent && (
+                <div className="mt-6 flex items-center gap-3 rounded-lg bg-emerald-50 border border-emerald-200 p-4 text-emerald-800 text-xs font-semibold">
+                  <CheckCircle2 className="h-5 w-5 text-emerald-600 flex-shrink-0" />
+                  <span>Thank you! Your enquiry has been received. Our advisory team will contact you within 24 hours.</span>
+                </div>
+              )}
+
+              {errorMsg && (
+                <div className="mt-6 rounded-lg bg-rose-50 border border-rose-200 p-4 text-rose-700 text-xs font-medium">
+                  {errorMsg}
+                </div>
+              )}
 
               <div className="mt-8 grid gap-5">
-                {[
-                  { l: "Full Name", t: "text", p: "John Doe" },
-                  { l: "Email", t: "email", p: "john@company.com" },
-                  { l: "Phone", t: "tel", p: "+91 98XXX XXXXX" },
-                ].map((f) => (
-                  <label key={f.l} className="block">
-                    <span className="text-[10px] tracking-[0.3em] uppercase text-white/60">{f.l}</span>
+                <label className="block">
+                  <span className="text-[10px] tracking-[0.3em] uppercase text-black/70 font-semibold">Full Name *</span>
+                  <input
+                    required
+                    type="text"
+                    placeholder="John Doe"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="mt-2 w-full border-0 border-b border-foreground/20 bg-transparent py-3 text-foreground placeholder:text-foreground/35 focus:border-gold focus:outline-none transition-colors"
+                  />
+                </label>
+
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <label className="block">
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-black/70 font-semibold">Email *</span>
                     <input
                       required
-                      type={f.t}
-                      placeholder={f.p}
+                      type="email"
+                      placeholder="john@company.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="mt-2 w-full border-0 border-b border-foreground/20 bg-transparent py-3 text-foreground placeholder:text-foreground/35 focus:border-gold focus:outline-none transition-colors"
                     />
                   </label>
-                ))}
+                  <label className="block">
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-black/70 font-semibold">Phone</span>
+                    <input
+                      type="tel"
+                      placeholder="+91 98XXX XXXXX"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="mt-2 w-full border-0 border-b border-foreground/20 bg-transparent py-3 text-foreground placeholder:text-foreground/35 focus:border-gold focus:outline-none transition-colors"
+                    />
+                  </label>
+                </div>
+
                 <label className="block">
-                  <span className="text-[10px] tracking-[0.3em] uppercase text-foreground/60">Project Type</span>
-                  <select className="mt-2 w-full border-0 border-b border-foreground/20 bg-transparent py-3 text-foreground focus:border-gold focus:outline-none">
+                  <span className="text-[10px] tracking-[0.3em] uppercase text-black/70 font-semibold">Project Type</span>
+                  <select
+                    value={formData.projectType}
+                    onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+                    className="mt-2 w-full border-0 border-b border-foreground/20 bg-transparent py-3 text-foreground focus:border-gold focus:outline-none"
+                  >
                     <option className="bg-ivory">Residential</option>
                     <option className="bg-ivory">Commercial</option>
                     <option className="bg-ivory">Apartment Development</option>
@@ -171,11 +240,14 @@ export function Contact() {
                     <option className="bg-ivory">Renovation / Interior</option>
                   </select>
                 </label>
+
                 <label className="block">
-                  <span className="text-[10px] tracking-[0.3em] uppercase text-foreground/60">Message</span>
+                  <span className="text-[10px] tracking-[0.3em] uppercase text-black/70 font-semibold">Message</span>
                   <textarea
                     rows={4}
                     placeholder="Tell us about your project..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="mt-2 w-full resize-none border-0 border-b border-foreground/20 bg-transparent py-3 text-foreground placeholder:text-foreground/35 focus:border-gold focus:outline-none"
                   />
                 </label>
@@ -183,10 +255,22 @@ export function Contact() {
 
               <button
                 type="submit"
-                className="group mt-10 inline-flex items-center gap-3 rounded-full bg-gold px-7 py-4 text-xs font-medium tracking-[0.25em] text-charcoal-deep transition-all hover:scale-[1.02] hover:shadow-[0_20px_60px_-15px_var(--gold)]"
+                disabled={loading}
+                className="group mt-10 inline-flex items-center gap-3 rounded-full bg-gold px-7 py-4 text-xs font-medium tracking-[0.25em] text-charcoal-deep transition-all hover:scale-[1.02] hover:shadow-[0_20px_60px_-15px_var(--gold)] disabled:opacity-60"
               >
-                {sent ? "MESSAGE SENT" : "SEND ENQUIRY"}
-                <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                {loading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    SENDING...
+                  </>
+                ) : sent ? (
+                  "MESSAGE SENT"
+                ) : (
+                  <>
+                    SEND ENQUIRY
+                    <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </>
+                )}
               </button>
             </form>
           </Reveal>

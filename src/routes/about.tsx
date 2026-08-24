@@ -18,9 +18,9 @@ export const Route = createFileRoute("/about")({
         content:
           "35+ year construction legacy across Delhi NCR. Architects, civil engineers and project managers under one roof.",
       },
-      { property: "og:url", content: "https://star-heights-vision.lovable.app/about" },
+      { property: "og:url", content: "https://starheights.in/about" },
     ],
-    links: [{ rel: "canonical", href: "https://star-heights-vision.lovable.app/about" }],
+    links: [{ rel: "canonical", href: "https://starheights.in/about" }],
   }),
   component: AboutPage,
 });

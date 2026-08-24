@@ -35,7 +35,7 @@ export function Reels() {
             </h2>
           </div>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/starheightsconstructions/"
             target="_blank"
             rel="noreferrer"
             className="group inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-5 py-2.5 text-xs tracking-[0.25em] text-gold hover:bg-gold hover:text-charcoal-deep transition-all"

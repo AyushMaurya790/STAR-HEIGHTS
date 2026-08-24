@@ -81,67 +81,85 @@ const galleryRows = [
 
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { useEffect, useState } from "react";
+import { clientApi, getImageUrl } from "@/lib/api";
 
 export const Route = createFileRoute("/gallery")({
   component: GalleryPage,
 });
 
 function GalleryPage() {
+  const [images, setImages] = useState<string[]>(GALLERY_IMAGES);
+
+  useEffect(() => {
+    clientApi.getGallery().then((data) => {
+      if (data && data.length > 0) {
+        const dynamicUrls = data.map((d) => getImageUrl(d.img)).filter(Boolean);
+        if (dynamicUrls.length > 0) {
+          setImages(dynamicUrls);
+        }
+      }
+    });
+  }, []);
+
+  // Split images into alternating 2 and 3 columns
+  const computedRows: string[][] = [];
+  let currentIndex = 0;
+  let isTwoCol = true;
+
+  while (currentIndex < images.length) {
+    const take = isTwoCol ? 2 : 3;
+    computedRows.push(images.slice(currentIndex, currentIndex + take));
+    currentIndex += take;
+    isTwoCol = !isTwoCol;
+  }
+
+  const rowsToRender = computedRows.length > 0 ? computedRows : galleryRows;
+
   return (
     <>
       <Header />
 
       <main className="bg-charcoal-deep pt-24">
-
         <section className="relative h-[90vh] overflow-hidden">
-
           <img
             src={galleryHero}
             alt="Gallery Hero"
             className="absolute inset-0 h-full w-full object-cover"
           />
-
-      </section>
+        </section>
 
         <section className="bg-charcoal-deep pt-28 pb-20">
-
-  <div className="mx-auto max-w-7xl px-5 lg:px-10">
-
-    {galleryRows.map((row, rowIndex) => (
-  <div
-    key={rowIndex}
-    className={`grid ${
-      row.length === 2 ? "grid-cols-2" : "grid-cols-3"
-    } gap-5 mb-5`}
-  >
-    {row.map((img, index) => (
-      <div
-        key={index}
-        className={`group overflow-hidden rounded-[22px] border border-gold/20 hover:border-gold transition-all duration-500 hover:shadow-[0_0_25px_8px_rgba(212,175,55,0.22)] ${
-          row.length === 2
-  ? "aspect-[5/4]"
-  : "aspect-[3/4]"
-        }`}
-      >
-        <img
-          src={img}
-          alt={`Gallery ${rowIndex + 1}-${index + 1}`}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-      </div>
-    ))}
-  </div>
-))}
-
-  </div>
-
-</section>
-
+          <div className="mx-auto max-w-7xl px-5 lg:px-10">
+            {rowsToRender.map((row, rowIndex) => (
+              <div
+                key={rowIndex}
+                className={`grid ${
+                  row.length === 2 ? "grid-cols-2" : "grid-cols-3"
+                } gap-5 mb-5`}
+              >
+                {row.map((img, index) => (
+                  <div
+                    key={index}
+                    className={`group overflow-hidden rounded-[22px] border border-gold/20 hover:border-gold transition-all duration-500 hover:shadow-[0_0_25px_8px_rgba(212,175,55,0.22)] ${
+                      row.length === 2 ? "aspect-[5/4]" : "aspect-[3/4]"
+                    }`}
+                  >
+                    <img
+                      src={img}
+                      alt={`Gallery ${rowIndex + 1}-${index + 1}`}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </section>
       </main>
 
       <Footer />
-
     </>
   );
 }

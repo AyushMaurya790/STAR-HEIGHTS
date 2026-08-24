@@ -26,9 +26,9 @@ export const Route = createFileRoute("/")({
         content:
           "35+ years of premium construction across Delhi NCR. Explore our services, live ongoing projects and consult our team.",
       },
-      { property: "og:url", content: "https://star-heights-vision.lovable.app/" },
+      { property: "og:url", content: "https://starheights.in/" },
     ],
-    links: [{ rel: "canonical", href: "https://star-heights-vision.lovable.app/" }],
+    links: [{ rel: "canonical", href: "https://starheights.in/" }],
   }),
 
   component: Index,

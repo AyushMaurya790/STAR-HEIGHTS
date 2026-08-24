@@ -4,15 +4,29 @@ import apartment from "@/assets/project-apartment.jpg";
 import heroBanner from "@/assets/live-projects/hero-banner.png";
 import { Reveal } from "./Reveal";
 import { MapPin } from "lucide-react";
+import { useEffect, useState } from "react";
+import { clientApi, getImageUrl, type ProjectItem } from "@/lib/api";
 
-
-const PROJECTS = [
-  { img: heroBanner, title: "Vinod Heights Residences", tag: "Residential", loc: "East Delhi", year: "2024" },
+const DEFAULT_PROJECTS = [
+  { img: heroBanner, title: "Vinod Heights Residences", tag: "Residential", loc: "East Delhi", year: "2024", isFlagship: true },
   { img: commercial, title: "Noida Corporate Spire", tag: "Commercial", loc: "Noida Sector 62", year: "2023" },
   { img: apartment, title: "Faridabad Skyline Towers", tag: "Apartment Development", loc: "Faridabad", year: "2025" },
 ];
 
 export function Projects() {
+  const [projects, setProjects] = useState<any[]>(DEFAULT_PROJECTS);
+
+  useEffect(() => {
+    clientApi.getProjects().then((data) => {
+      if (data && data.length > 0) {
+        setProjects(data);
+      }
+    });
+  }, []);
+
+  const featured = projects.find((p) => p.isFlagship) || projects[0] || DEFAULT_PROJECTS[0];
+  const remaining = projects.filter((p) => (p.id || p.title) !== (featured.id || featured.title));
+
   return (
     <section id="projects" className="relative bg-ivory py-28 lg:py-40">
       <div className="mx-auto max-w-7xl px-5 lg:px-10">
@@ -40,8 +54,8 @@ export function Projects() {
           <a href="#contact" className="group relative block overflow-hidden rounded-sm">
             <div className="relative aspect-[16/9] overflow-hidden">
               <img
-                src={PROJECTS[0].img}
-                alt={PROJECTS[0].title}
+                src={getImageUrl(featured.img)}
+                alt={featured.title}
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-[1500ms] group-hover:scale-110"
               />
@@ -52,26 +66,26 @@ export function Projects() {
                 <span className="rounded-full bg-gold/15 px-3 py-1 text-[10px] tracking-[0.3em] text-gold border border-gold/30">
                   FLAGSHIP
                 </span>
-                <span className="text-[10px] tracking-[0.3em] text-ivory/70">{PROJECTS[0].tag.toUpperCase()}</span>
+                <span className="text-[10px] tracking-[0.3em] text-ivory/70">{(featured.tag || "Residential").toUpperCase()}</span>
               </div>
               <h3 className="font-display text-3xl md:text-5xl font-semibold max-w-3xl text-ivory">
-                {PROJECTS[0].title}
+                {featured.title}
               </h3>
               <div className="mt-4 flex items-center gap-5 text-sm text-ivory/80">
-                <span className="inline-flex items-center gap-2"><MapPin className="h-4 w-4 text-gold" />{PROJECTS[0].loc}</span>
-                <span>{PROJECTS[0].year}</span>
+                <span className="inline-flex items-center gap-2"><MapPin className="h-4 w-4 text-gold" />{featured.loc || "Delhi NCR"}</span>
+                <span>{featured.year || "2026"}</span>
               </div>
             </div>
           </a>
         </Reveal>
 
         <div className="mt-6 grid gap-6 md:grid-cols-2">
-          {PROJECTS.slice(1).map((p, i) => (
-            <Reveal key={p.title} delay={i * 120}>
+          {remaining.map((p, i) => (
+            <Reveal key={p.id || p.title} delay={i * 120}>
               <a href="#contact" className="group relative block overflow-hidden rounded-sm">
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
-                    src={p.img}
+                    src={getImageUrl(p.img)}
                     alt={p.title}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-[1500ms] group-hover:scale-110"
@@ -79,11 +93,11 @@ export function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal-deep via-charcoal-deep/30 to-transparent" />
                 </div>
                 <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
-                  <span className="text-[10px] tracking-[0.3em] text-gold">{p.tag.toUpperCase()}</span>
+                  <span className="text-[10px] tracking-[0.3em] text-gold">{(p.tag || "Residential").toUpperCase()}</span>
                   <h3 className="mt-2 font-display text-2xl md:text-3xl font-semibold text-ivory">{p.title}</h3>
                   <div className="mt-3 flex items-center gap-4 text-xs text-ivory/75">
-                    <span className="inline-flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5 text-gold" />{p.loc}</span>
-                    <span>{p.year}</span>
+                    <span className="inline-flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5 text-gold" />{p.loc || "Delhi NCR"}</span>
+                    <span>{p.year || "2026"}</span>
                   </div>
                 </div>
               </a>

@@ -3,8 +3,10 @@ import { Link } from "@tanstack/react-router";
 import projCommercial from "@/assets/project-commercial.jpg";
 import projResidential from "@/assets/project-residential.jpg";
 import projApartment from "@/assets/project-apartment.jpg";
+import { useEffect, useState } from "react";
+import { clientApi, getImageUrl, type BlogItem } from "@/lib/api";
 
-const POSTS = [
+const DEFAULT_POSTS = [
   {
     img: projCommercial,
     tag: "Industry Insights",
@@ -32,6 +34,19 @@ const POSTS = [
 ];
 
 export function Blog({ showAll = false }: { showAll?: boolean }) {
+  const [posts, setPosts] = useState<any[]>(DEFAULT_POSTS);
+
+  useEffect(() => {
+    clientApi.getBlogs().then((data) => {
+      if (data && data.length > 0) {
+        const published = data.filter((b) => b.status !== "Draft");
+        setPosts(published.length > 0 ? published : data);
+      }
+    });
+  }, []);
+
+  const displayPosts = showAll ? posts : posts.slice(0, 3);
+
   return (
     <section id="blog" className="relative bg-ivory py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-10">
@@ -57,26 +72,26 @@ export function Blog({ showAll = false }: { showAll?: boolean }) {
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
-          {POSTS.map((p) => (
+          {displayPosts.map((p) => (
             <article
-              key={p.title}
+              key={p.id || p.title}
               className="group relative overflow-hidden rounded-2xl border border-gold/10 bg-card backdrop-blur-sm transition-all hover:border-gold/40 hover:-translate-y-1"
             >
               <div className="relative h-60 overflow-hidden">
                 <img
-                  src={p.img}
+                  src={getImageUrl(p.img)}
                   alt={p.title}
                   className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal-deep via-charcoal-deep/30 to-transparent" />
                 <span className="absolute left-4 top-4 rounded-full border border-gold/40 bg-charcoal-deep/70 px-3 py-1 text-[10px] tracking-[0.2em] text-gold backdrop-blur">
-                  {p.tag.toUpperCase()}
+                  {(p.tag || "Insights").toUpperCase()}
                 </span>
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-2 text-[11px] tracking-[0.18em] text-foreground/50">
                   <Calendar className="h-3 w-3" />
-                  {p.date.toUpperCase()}
+                  {(p.date || "Recent").toUpperCase()}
                 </div>
                 <h3 className="mt-3 font-display text-xl font-semibold leading-snug text-foreground group-hover:text-gold transition-colors">
                   {p.title}
