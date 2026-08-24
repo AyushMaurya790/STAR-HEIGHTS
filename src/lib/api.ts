@@ -1,11 +1,25 @@
 // Star Heights Client API Service
-const LIVE_API_URL = "http://200.141.9.221:5002/api";
-const envUrl = import.meta.env.VITE_API_URL;
-const API_BASE = envUrl && !envUrl.includes("5001") ? envUrl : LIVE_API_URL;
+function getApiBaseUrl(): string {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (envUrl && !envUrl.includes("5001")) {
+    return envUrl;
+  }
+
+  // When loaded over HTTPS in browser, prevent Mixed Content blocking
+  if (typeof window !== "undefined" && window.location.protocol === "https:") {
+    if (window.location.hostname.includes("starheights")) {
+      return "https://api.starheights.in/api";
+    }
+    return "/api";
+  }
+
+  return "http://200.141.9.221:5002/api";
+}
+
+const API_BASE = getApiBaseUrl();
 
 export function getBackendOrigin(): string {
-  const envUrl = import.meta.env.VITE_API_URL;
-  const base = envUrl && !envUrl.includes("5001") ? envUrl : LIVE_API_URL;
+  const base = getApiBaseUrl();
   return base.replace(/\/api\/?$/, "");
 }
 
@@ -121,7 +135,7 @@ export const clientApi = {
   // Fetch Services from backend
   async getServices(): Promise<ServiceItem[]> {
     try {
-      const res = await fetch(`${API_BASE}/services`);
+      const res = await fetch(`${getApiBaseUrl()}/services`);
       if (!res.ok) throw new Error("Failed to fetch services");
       const json = await res.json();
       return json.data || [];
@@ -134,7 +148,7 @@ export const clientApi = {
   // Fetch Projects from backend
   async getProjects(): Promise<ProjectItem[]> {
     try {
-      const res = await fetch(`${API_BASE}/projects`);
+      const res = await fetch(`${getApiBaseUrl()}/projects`);
       if (!res.ok) throw new Error("Failed to fetch projects");
       const json = await res.json();
       return json.data || [];
@@ -147,7 +161,7 @@ export const clientApi = {
   // Fetch Gallery from backend
   async getGallery(): Promise<GalleryItem[]> {
     try {
-      const res = await fetch(`${API_BASE}/gallery`);
+      const res = await fetch(`${getApiBaseUrl()}/gallery`);
       if (!res.ok) throw new Error("Failed to fetch gallery");
       const json = await res.json();
       return json.data || [];
@@ -160,7 +174,7 @@ export const clientApi = {
   // Fetch Blogs from backend
   async getBlogs(): Promise<BlogItem[]> {
     try {
-      const res = await fetch(`${API_BASE}/blogs`);
+      const res = await fetch(`${getApiBaseUrl()}/blogs`);
       if (!res.ok) throw new Error("Failed to fetch blogs");
       const json = await res.json();
       return json.data || [];
@@ -173,7 +187,7 @@ export const clientApi = {
   // Fetch Why Us data (Counters & Pillars) from backend
   async getWhyUs(): Promise<WhyUsData | null> {
     try {
-      const res = await fetch(`${API_BASE}/why-us`);
+      const res = await fetch(`${getApiBaseUrl()}/why-us`);
       if (!res.ok) throw new Error("Failed to fetch why-us");
       const json = await res.json();
       return json.data || null;
@@ -186,7 +200,7 @@ export const clientApi = {
   // Submit Contact Form to backend
   async submitContact(payload: ContactPayload): Promise<{ success: boolean; message: string }> {
     try {
-      const res = await fetch(`${API_BASE}/contacts`, {
+      const res = await fetch(`${getApiBaseUrl()}/contacts`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
