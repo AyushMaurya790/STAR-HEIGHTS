@@ -52,12 +52,22 @@ export function getImageUrl(path?: string): string {
 export interface ServiceItem {
   id: string;
   title: string;
+  h1?: string;
+  slug?: string;
   icon?: string;
   desc: string;
   points: string[];
   category?: string;
   status?: string;
   order?: number;
+  // In-Service SEO Meta
+  metaTitle?: string;
+  metaDescription?: string;
+  keywords?: string;
+  canonicalUrl?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
 }
 
 export interface ProjectItem {
@@ -88,6 +98,7 @@ export interface GalleryItem {
 export interface BlogItem {
   id: string;
   title: string;
+  h1?: string;
   slug?: string;
   tag: string;
   author?: string;
@@ -97,6 +108,20 @@ export interface BlogItem {
   img: string;
   excerpt: string;
   content?: string;
+  // In-Post SEO & Social Meta
+  metaTitle?: string;
+  metaDescription?: string;
+  keywords?: string;
+  canonicalUrl?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  socialLinks?: {
+    facebook?: string;
+    twitter?: string;
+    linkedin?: string;
+    instagram?: string;
+  };
 }
 
 export interface StatCounter {

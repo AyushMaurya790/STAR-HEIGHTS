@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
 import { Services } from "@/components/site/Services";
+import { Contact } from "@/components/site/Contact";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -32,6 +33,7 @@ function ServicesPage() {
       intro="Five core practices, one disciplined delivery model — residential, commercial, apartment, industrial and renovation & interiors. Every Star Heights project moves through the same standard of design rigor, site supervision and finishing quality, with live ongoing builds you can track in real time."
     >
       <Services />
+      <Contact />
     </PageShell>
   );
 }

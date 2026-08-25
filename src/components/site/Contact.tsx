@@ -1,7 +1,7 @@
-import { MapPin, Phone, Mail, Send, Clock, ShieldCheck, CheckCircle2, Loader2 } from "lucide-react";
+import { MapPin, Phone, Mail, Send, Clock, ShieldCheck, CheckCircle2, Loader2, Sparkles } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { Reveal } from "./Reveal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { clientApi } from "@/lib/api";
 
 const WARRANTIES = [
@@ -10,17 +10,57 @@ const WARRANTIES = [
   { icon: Clock, k: "1 Yr", l: "General Warranty" },
 ];
 
-export function Contact() {
+const CONTACT_PROJECT_TYPES = [
+  "Residential Construction",
+  "Commercial Projects",
+  "Apartment Development",
+  "Industrial Construction",
+  "Renovation & Interiors",
+  "General Architecture & Turnkey Enquiry",
+];
+
+function normalizeServiceType(raw?: string): string {
+  if (!raw) return "Residential Construction";
+  const lower = raw.toLowerCase();
+  if (lower.includes("residen")) return "Residential Construction";
+  if (lower.includes("commerc")) return "Commercial Projects";
+  if (lower.includes("apart")) return "Apartment Development";
+  if (lower.includes("indust")) return "Industrial Construction";
+  if (lower.includes("renov") || lower.includes("interior")) return "Renovation & Interiors";
+  return raw;
+}
+
+export function Contact({ defaultProjectType }: { defaultProjectType?: string }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    projectType: "Residential",
+    projectType: normalizeServiceType(defaultProjectType),
     message: "",
   });
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const serviceParam = params.get("service") || params.get("type");
+      if (serviceParam) {
+        const resolved = normalizeServiceType(serviceParam);
+        setFormData((prev) => ({
+          ...prev,
+          projectType: resolved,
+          message: prev.message || `I am interested in consulting regarding ${serviceParam}.`,
+        }));
+      } else if (defaultProjectType) {
+        setFormData((prev) => ({
+          ...prev,
+          projectType: normalizeServiceType(defaultProjectType),
+        }));
+      }
+    }
+  }, [defaultProjectType]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -227,17 +267,19 @@ export function Contact() {
                 </div>
 
                 <label className="block">
-                  <span className="text-[10px] tracking-[0.3em] uppercase text-black/70 font-semibold">Project Type</span>
+                  <span className="text-[10px] tracking-[0.3em] uppercase text-black/70 font-semibold">
+                    Practice / Service
+                  </span>
                   <select
                     value={formData.projectType}
                     onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                    className="mt-2 w-full border-0 border-b border-foreground/20 bg-transparent py-3 text-foreground focus:border-gold focus:outline-none"
+                    className="mt-2 w-full border-0 border-b border-foreground/20 bg-transparent py-3 text-foreground focus:border-gold focus:outline-none text-xs sm:text-sm"
                   >
-                    <option className="bg-ivory">Residential</option>
-                    <option className="bg-ivory">Commercial</option>
-                    <option className="bg-ivory">Apartment Development</option>
-                    <option className="bg-ivory">Industrial</option>
-                    <option className="bg-ivory">Renovation / Interior</option>
+                    {CONTACT_PROJECT_TYPES.map((type) => (
+                      <option key={type} value={type} className="bg-ivory text-black">
+                        {type}
+                      </option>
+                    ))}
                   </select>
                 </label>
 

@@ -3,6 +3,7 @@ import { Reveal } from "./Reveal";
 import heroBanner from "@/assets/live-projects/hero-banner.png";
 import { useEffect, useState } from "react";
 import { clientApi, type ServiceItem } from "@/lib/api";
+import { PopupForm } from "./PopupForm";
 
 const ICON_MAP: Record<string, any> = {
   Home,
@@ -51,6 +52,13 @@ const DEFAULT_SERVICES = [
 
 export function Services() {
   const [services, setServices] = useState<any[]>(DEFAULT_SERVICES);
+  const [enquiryOpen, setEnquiryOpen] = useState(false);
+  const [selectedServiceTitle, setSelectedServiceTitle] = useState("");
+
+  const handleEnquire = (serviceTitle: string) => {
+    setSelectedServiceTitle(serviceTitle);
+    setEnquiryOpen(true);
+  };
 
   useEffect(() => {
     clientApi.getServices().then((data) => {
@@ -146,11 +154,18 @@ export function Services() {
                       <span className="text-[10px] tracking-[0.3em] uppercase text-foreground/45 transition-colors duration-500 group-hover:text-gold">
                         0{i + 1} / 0{services.length}
                       </span>
-                      {/* CTA chip */}
-                      <a href="#contact" className="inline-flex items-center gap-1.5 rounded-full border border-foreground/15 px-3 py-1 text-[10px] tracking-[0.25em] text-foreground/60 transition-all duration-500 group-hover:border-gold group-hover:bg-gold group-hover:text-charcoal-deep group-hover:gap-2.5">
-                        ENQUIRE
+                      {/* CTA button */}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleEnquire(s.title);
+                        }}
+                        className="inline-flex items-center gap-1.5 rounded-full border border-foreground/15 px-3.5 py-1 text-[10px] font-semibold tracking-[0.25em] text-foreground/60 transition-all duration-500 hover:scale-105 group-hover:border-gold group-hover:bg-gold group-hover:text-charcoal-deep group-hover:gap-2.5 cursor-pointer"
+                      >
+                        <span>ENQUIRE</span>
                         <ArrowUpRight className="h-3 w-3 transition-transform duration-500 group-hover:rotate-45" />
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </article>
@@ -217,6 +232,12 @@ export function Services() {
           </Reveal>
         </div>
       </div>
+
+      <PopupForm
+        open={enquiryOpen}
+        onOpenChange={setEnquiryOpen}
+        initialServiceTitle={selectedServiceTitle}
+      />
     </section>
   );
 }
