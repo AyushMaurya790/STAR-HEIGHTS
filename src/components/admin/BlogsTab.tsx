@@ -29,6 +29,7 @@ import {
   Copy,
 } from "lucide-react";
 import { adminApi, BlogItem, getImageUrl } from "@/lib/api";
+import { RichTextEditor } from "./RichTextEditor";
 
 export function BlogsTab() {
   const [blogs, setBlogs] = useState<BlogItem[]>([]);
@@ -543,70 +544,14 @@ export function BlogsTab() {
                 </div>
               </div>
 
-              {/* SECTION 2: BLOG CONTENT EDITOR */}
-              <div className="space-y-3 rounded-2xl border border-white/10 bg-white/[0.02] p-5">
-                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
-                  <div className="flex items-center gap-2 text-gold text-xs font-bold uppercase tracking-wider">
-                    <FileText className="h-4 w-4" />
-                    <span>2. Full Blog Article Content</span>
-                  </div>
-
-                  {/* Formatting Helpers */}
-                  <div className="flex flex-wrap items-center gap-1.5">
-                    <button
-                      type="button"
-                      onClick={() => insertFormatting("## Section Heading (H2)\nDetailed architectural explanation...")}
-                      className="inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] text-ivory hover:border-gold/40 hover:text-gold transition-colors"
-                      title="Insert H2 Heading"
-                    >
-                      <Heading2 className="h-3 w-3" />
-                      <span>+ H2</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => insertFormatting("### Sub-Topic (H3)\nSpecific engineering specification...")}
-                      className="inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] text-ivory hover:border-gold/40 hover:text-gold transition-colors"
-                      title="Insert H3 Heading"
-                    >
-                      <Heading3 className="h-3 w-3" />
-                      <span>+ H3</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => insertFormatting("• Key point or material standard\n• High grade reinforced steel\n• Quality assurance checklist")}
-                      className="inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] text-ivory hover:border-gold/40 hover:text-gold transition-colors"
-                      title="Insert Bullet List"
-                    >
-                      <List className="h-3 w-3" />
-                      <span>+ List</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => insertFormatting('> "Precision engineering is the cornerstone of every enduring landmark."')}
-                      className="inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] text-ivory hover:border-gold/40 hover:text-gold transition-colors"
-                      title="Insert Quote"
-                    >
-                      <Quote className="h-3 w-3" />
-                      <span>+ Quote</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div>
-                  <textarea
-                    rows={8}
-                    value={formData.content}
-                    onChange={(e) => handleContentChange(e.target.value)}
-                    placeholder="Write your complete blog article, technical breakdown, site blueprint notes, case studies..."
-                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-xs sm:text-sm text-ivory focus:border-gold focus:outline-none leading-relaxed font-sans"
-                  />
-                  <div className="mt-1 flex items-center justify-between text-[10px] text-ivory/50">
-                    <span>Markdown and headings supported</span>
-                    <span>
-                      {getWordCount(formData.content)} words | {formData.content?.length || 0} characters
-                    </span>
-                  </div>
-                </div>
+              {/* SECTION 2: RICH BLOG CONTENT EDITOR (ALL FORMATTING FEATURES) */}
+              <div className="space-y-2">
+                <RichTextEditor
+                  value={formData.content || ""}
+                  onChange={(html) => handleContentChange(html)}
+                  placeholder="Start writing your blog post..."
+                  minHeight="320px"
+                />
               </div>
 
               {/* SECTION 3: IN-POST SEO & SOCIAL META (UNDER THE POST) */}
@@ -741,45 +686,35 @@ export function BlogsTab() {
                       />
                     </div>
 
-                    {/* Social Media OpenGraph & Links */}
+                    {/* Social Media Links & Profiles */}
                     <div className="space-y-3 rounded-xl border border-white/5 bg-black/20 p-4">
                       <div className="flex items-center gap-2 text-xs font-bold text-ivory uppercase tracking-wider">
                         <Share2 className="h-4 w-4 text-gold" />
-                        <span>Social Share Meta & External Profiles</span>
+                        <span>Social Media Channels & External Links</span>
                       </div>
 
                       <div className="grid gap-3 sm:grid-cols-2">
                         <div>
                           <label className="text-[10px] font-bold text-ivory/70 uppercase tracking-wider mb-1 block">
-                            OG Social Title
+                            Instagram Profile / Post URL
                           </label>
                           <input
-                            type="text"
-                            value={formData.ogTitle}
-                            onChange={(e) => setFormData({ ...formData, ogTitle: e.target.value })}
-                            placeholder={formData.title || "Social Title"}
-                            className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs text-ivory focus:border-gold focus:outline-none"
+                            type="url"
+                            value={formData.socialLinks?.instagram || ""}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                socialLinks: { ...formData.socialLinks, instagram: e.target.value },
+                              })
+                            }
+                            placeholder="https://instagram.com/starheights..."
+                            className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs text-ivory focus:border-gold focus:outline-none font-mono text-[11px]"
                           />
                         </div>
 
                         <div>
                           <label className="text-[10px] font-bold text-ivory/70 uppercase tracking-wider mb-1 block">
-                            OG Social Image URL
-                          </label>
-                          <input
-                            type="text"
-                            value={formData.ogImage}
-                            onChange={(e) => setFormData({ ...formData, ogImage: e.target.value })}
-                            placeholder={formData.img || "https://..."}
-                            className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs text-ivory focus:border-gold focus:outline-none"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="grid gap-3 sm:grid-cols-2">
-                        <div>
-                          <label className="text-[10px] font-bold text-ivory/70 uppercase tracking-wider mb-1 block">
-                            LinkedIn Target Share URL
+                            LinkedIn Profile / Company URL
                           </label>
                           <input
                             type="url"
@@ -790,8 +725,8 @@ export function BlogsTab() {
                                 socialLinks: { ...formData.socialLinks, linkedin: e.target.value },
                               })
                             }
-                            placeholder="https://linkedin.com/in/..."
-                            className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-ivory focus:border-gold focus:outline-none font-mono text-[11px]"
+                            placeholder="https://linkedin.com/company/starheights..."
+                            className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs text-ivory focus:border-gold focus:outline-none font-mono text-[11px]"
                           />
                         </div>
 
@@ -808,8 +743,26 @@ export function BlogsTab() {
                                 socialLinks: { ...formData.socialLinks, twitter: e.target.value },
                               })
                             }
-                            placeholder="https://x.com/..."
-                            className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-ivory focus:border-gold focus:outline-none font-mono text-[11px]"
+                            placeholder="https://x.com/starheights..."
+                            className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs text-ivory focus:border-gold focus:outline-none font-mono text-[11px]"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="text-[10px] font-bold text-ivory/70 uppercase tracking-wider mb-1 block">
+                            Facebook Page URL
+                          </label>
+                          <input
+                            type="url"
+                            value={formData.socialLinks?.facebook || ""}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                socialLinks: { ...formData.socialLinks, facebook: e.target.value },
+                              })
+                            }
+                            placeholder="https://facebook.com/starheights..."
+                            className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs text-ivory focus:border-gold focus:outline-none font-mono text-[11px]"
                           />
                         </div>
                       </div>

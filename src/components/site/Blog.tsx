@@ -201,9 +201,16 @@ export function Blog({ showAll = false }: { showAll?: boolean }) {
             </div>
 
             {/* Content Body */}
-            <div className="mt-8 space-y-4 text-sm sm:text-base leading-relaxed text-foreground/85 whitespace-pre-line border-t border-foreground/10 pt-6">
-              {selectedArticle.content || selectedArticle.excerpt}
-            </div>
+            {selectedArticle.content && selectedArticle.content.includes("<") ? (
+              <div
+                className="mt-8 text-sm sm:text-base leading-relaxed text-foreground/85 border-t border-foreground/10 pt-6 prose prose-gold max-w-none space-y-3"
+                dangerouslySetInnerHTML={{ __html: selectedArticle.content }}
+              />
+            ) : (
+              <div className="mt-8 space-y-4 text-sm sm:text-base leading-relaxed text-foreground/85 whitespace-pre-line border-t border-foreground/10 pt-6">
+                {selectedArticle.content || selectedArticle.excerpt}
+              </div>
+            )}
 
             {/* Close footer button */}
             <div className="mt-8 pt-4 border-t border-foreground/10 flex justify-end">
